@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import { BrowserRouter, Switch , Route } from 'react-router-dom';
 import GuestHomePage from './pages/guest-home-page';
-
+import RegisterPage from './pages/register-page';
 
 
 class Navigation extends Component {
@@ -11,7 +11,8 @@ class Navigation extends Component {
         return(
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={GuestHomePage}/>
+                    <Route exact path="/" component={GuestHomePage}/>
+                    <Route path="/register" component={RegisterPage}/>
                 </Switch>
             </BrowserRouter>
         )

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Post from './components/posts';
-import Pagination from './components/pagination';
 import './App.css';
 import { getRoles } from '@testing-library/react';
 

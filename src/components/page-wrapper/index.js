@@ -5,20 +5,28 @@ import Footer from '../footer';
 import LinkContainer from '../link-container';
 import LinkComponent from '../link';
 import Paragraph from '../paragraph';
+import getNavigation from '../../utils/getNavigation';
 
 const PageWrapper = (props) => {
 
+    const linksArray = getNavigation();
+    
+    const mainPage = props.page ? 'guestPage' : undefined;
+    
     return (
         <div>
             <Header>
                 <LinkContainer>
-                    <LinkComponent text="Home"/>
-                    <LinkComponent text="About"/>
-                    <LinkComponent text="Login"/>
-                    <LinkComponent text="Register"/>
+                    {
+                        linksArray.map( ({title , href} , i) => {
+
+                            return <LinkComponent key={i} href={href} text={title}/>
+
+                        })
+                    }
                 </LinkContainer>
             </Header>
-            <Main>
+            <Main page={mainPage}>
                 {props.children}
             </Main>
             <Footer>

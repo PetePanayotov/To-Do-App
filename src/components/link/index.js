@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styles from './index.module.css'
 
-const LinkComponent = ({text}) => {
+const LinkComponent = ({text , href}) => {
 
     return (
-        <Link to="" className={styles.link}>{text}</Link>
+        <Link to={href} className={styles.link}>{text}</Link>
     )
     
 };

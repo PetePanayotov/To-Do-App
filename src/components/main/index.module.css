@@ -1,0 +1,16 @@
+.guest {
+
+    background-image: url('../../images/3.jpg');
+    background-position: center;
+    background-size: cover;     
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 82vh;
+}
+
+.other {
+
+    width: 100%;
+    height: 82vh;
+
+}

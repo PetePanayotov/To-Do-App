@@ -6,7 +6,7 @@ const GuestHomePage = () => {
 
     return(
 
-        <PageWrapper/>
+        <PageWrapper page="guestPage"/>
 
     )
 
