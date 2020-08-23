@@ -8,4 +8,11 @@ const Paragraph = styled.p `
 
 `;
 
-export default Paragraph;
+const FormParagraph = styled(Paragraph) `
+    color: #000000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    margin: 0 auto;
+`;
+
+export default {Paragraph , FormParagraph};

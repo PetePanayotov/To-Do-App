@@ -9,12 +9,11 @@ import LinkComponent from '../../components/link';
 import paragraphsObj from '../../components/paragraph';
 const {FormParagraph} = paragraphsObj;
 
-const RegisterPage = () => {
+const LoginPage = () => {
 
     const initialState = {
         username: '',
         password: '',
-        rePassword: ''
     }
 
     const [state , setState] = useState(initialState);
@@ -45,7 +44,7 @@ const RegisterPage = () => {
             body: JSON.stringify(data)
         };
 
-        const url = 'http://localhost:9999/api/user/register';
+        const url = 'http://localhost:9999/api/user/login';
 
         try {
             
@@ -55,13 +54,12 @@ const RegisterPage = () => {
                 throw new Error();
             };
 
-            console.log('Successfully Registered')
+            console.log('Successfully Logged In')
 
         } catch (error) {
             console.log(error)
-        }
+        };
 
-    
     };
 
  
@@ -82,13 +80,10 @@ const RegisterPage = () => {
                     <InputField type="password" value={state.password} onChange={e => handleChange(e , 'password')}/>
                 </InputContainer>
 
-                <InputContainer>
-                    <FormLabel>Repeat Password</FormLabel>
-                    <InputField type="password" value={state.rePassword} onChange={e => handleChange(e , 'rePassword')}/>
-                </InputContainer>
+                <Button type="submit" onClick={e => handleSubmit(e)}>Login</Button>
 
-                <Button type="submit" onClick={e => handleSubmit(e)}>Register</Button>
-                <FormParagraph>Already have an account? <LinkComponent href="/login" type="formLink" text="Login"/></FormParagraph>
+                <FormParagraph>Not registered yet? <LinkComponent href="/register" type="formLink" text="Register"/></FormParagraph>
+
             </Form>
 
         </PageWrapper>
@@ -96,4 +91,4 @@ const RegisterPage = () => {
 
 };
 
-export default RegisterPage;
+export default LoginPage;
