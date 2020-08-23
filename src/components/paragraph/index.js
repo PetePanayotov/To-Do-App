@@ -17,8 +17,8 @@ const TitleParagraph = styled(Paragraph) `
 const FooterParagraph = styled(Paragraph) `
     margin: 0;
     color: #ffffff;
-    font-size: 22px;
-    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif; 
 
 `;
 

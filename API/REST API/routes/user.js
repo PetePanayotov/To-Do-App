@@ -1,12 +1,18 @@
 const express = require('express');
 const config = require('../config/config');
 const router = express.Router();
-const {getUsers , registerUser , loginUser , updatedUser , deleteUser , verifyUser , getUserWithCars} = require('../controllers/user');
+const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , deleteUser , getUserWithCars} = require('../controllers/user');
 
 
-router.get('/', async (req , res , next) => {
+// router.get('/', async (req , res , next) => {
     
-    await getUsers(req , res , next);
+//     await getUser(req , res , next);
+
+// });
+
+router.get('/:username', async (req , res , next) => {
+    
+    await getUser(req , res , next);
 
 });
 
@@ -22,9 +28,9 @@ router.post('/register' , async (req , res , next) => {
 
 });
 
-router.post('/login', async (req , res , next) => {
+router.post('/verifyPassword', async (req , res , next) => {
     
-    await loginUser(req , res , next);
+    await verifyPassword(req , res , next);
 
 });
 

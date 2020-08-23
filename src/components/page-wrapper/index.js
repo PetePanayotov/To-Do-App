@@ -32,7 +32,7 @@ const PageWrapper = (props) => {
                 {props.children}
             </Main>
             <Footer>
-                <FooterParagraph>Just Do It</FooterParagraph>
+                <FooterParagraph>#JustDoIt</FooterParagraph>
             </Footer>
         </div>
     )
