@@ -4,8 +4,10 @@ import Main from '../main';
 import Footer from '../footer';
 import LinkContainer from '../link-container';
 import LinkComponent from '../link';
-import Paragraph from '../paragraph';
+import paragraphsObj from '../paragraph';
 import getNavigation from '../../utils/getNavigation';
+
+const {Paragraph} = paragraphsObj;
 
 const PageWrapper = (props) => {
 
@@ -20,7 +22,7 @@ const PageWrapper = (props) => {
                     {
                         linksArray.map( ({title , href} , i) => {
 
-                            return <LinkComponent key={i} href={href} text={title}/>
+                            return <LinkComponent key={i} type="headerLink" href={href} text={title}/>
 
                         })
                     }

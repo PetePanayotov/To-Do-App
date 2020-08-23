@@ -63,7 +63,6 @@ const registerUser = async (req , res , next) => {
 const loginUser = async (req , res , next) => {
 
     const {username , password} = req.body;
-    let isAdmin = undefined;
 
     try {
         
@@ -86,11 +85,7 @@ const loginUser = async (req , res , next) => {
                 password: user.password
             });
 
-            if (user.isAdmin) {
-                isAdmin = true;
-            };
-    
-            res.header('Authorization' , token).send([isAdmin ,user]);
+            res.header('Authorization' , token).send(user);
 
         }else{
             res.status(401).send('Invalid password');
