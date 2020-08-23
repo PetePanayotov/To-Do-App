@@ -1,20 +1,19 @@
 .headerLink {
     color: #ffffff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 22px;
     text-decoration: none;
 }
 
 .headerLink:hover {
     cursor: pointer;
-    color: #00D8FF;
-    border-bottom: 2px solid #00D8FF;
+    border-bottom: 2px solid #ffffff;
 }
 
 .formLink {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: #7E4CCC;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
 
 }

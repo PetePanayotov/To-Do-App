@@ -64,6 +64,27 @@ const RegisterPage = () => {
     
     };
 
+    const handleBlur = (event) => {
+
+        const target = event.target;
+        
+        const {password , rePassword} = state;
+
+        if(password !== rePassword) {
+            target.style.backgroundColor = "#FF4848";
+        };
+
+    };
+
+    const handleUserNameBlur = (event) => {
+
+        const target = event.target;
+        const {username} = state;
+
+        const url = '';
+
+    };
+
  
     
     return (
@@ -74,7 +95,10 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Username</FormLabel>
-                    <InputField value={state.username} onChange={e => handleChange(e , 'username')}/>
+                    <InputField value={state.username} 
+                        onChange={e => handleChange(e , 'username')}
+                        onBlur={e => handleUserNameBlur(e)}
+                    />
                 </InputContainer>
 
                 <InputContainer>
@@ -84,11 +108,13 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Repeat Password</FormLabel>
-                    <InputField type="password" value={state.rePassword} onChange={e => handleChange(e , 'rePassword')}/>
+                    <InputField type="password" value={state.rePassword} onChange={e => handleChange(e , 'rePassword')} onBlur={e => handleBlur(e)}/>
                 </InputContainer>
 
                 <Button type="submit" onClick={e => handleSubmit(e)}>Register</Button>
+
                 <FormParagraph>Already have an account? <LinkComponent href="/login" type="formLink" text="Login"/></FormParagraph>
+
             </Form>
 
         </PageWrapper>
