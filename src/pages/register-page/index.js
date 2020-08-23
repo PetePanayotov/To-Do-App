@@ -14,8 +14,11 @@ const RegisterPage = () => {
     const initialState = {
         username: '',
         password: '',
-        rePassword: ''
-    }
+        rePassword: '',
+        passwordIsDisabled: true,
+        rePasswordIsDisabled: true,
+        buttonIsDisabled: true
+    };
 
     const [state , setState] = useState(initialState);
 
@@ -33,7 +36,7 @@ const RegisterPage = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-
+        console.log(state)
         const data = {};
         Object.assign(data , state);
         
@@ -63,29 +66,101 @@ const RegisterPage = () => {
 
     
     };
-
-    const handleBlur = (event) => {
-
-        const target = event.target;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const handleUserNameBlur = async (event) => {
         
-        const {password , rePassword} = state;
+        const target = event.target;
+        const value = target.value;
+        const url = `http://localhost:9999/api/user/${value}`;
 
-        if(password !== rePassword) {
-            target.style.backgroundColor = "#FF4848";
+        const lengthError = 'Minimal length - 5 symbols';
+        const usageError = 'Username is already used'
+
+        const handleError = (errorText) => {
+
+            target.value = ''
+            target.style.backgroundColor = '#FF4040'
+            target.placeholder = errorText;
+        }
+
+        if (value.length < 5) {
+            return handleError(lengthError);
+        }
+        
+        const promise = await fetch(url);
+        const response = await promise.json();
+
+        if (response[0]) {
+            return handleError(usageError);
         };
 
+        const newState = {
+            passwordIsDisabled: false
+        };
+
+        setState({...state , ...newState});
+        target.style.backgroundColor = '#A2FFA2';
+        target.placeholder = '';
+
     };
 
-    const handleUserNameBlur = (event) => {
+    const handlePasswordBlur = (event) => {
 
         const target = event.target;
-        const {username} = state;
+        const value = target.value;
 
-        const url = '';
+        if(value.length < 7) {
+
+            const newState = {};
+
+            newState['password'] = '';
+            setState({...state , ...newState});
+
+            target.style.backgroundColor = '#FF4040'
+            target.placeholder = 'Minimal Length - 7 symbols';
+
+            return;
+        };
+
+        const newState = {
+            rePasswordIsDisabled: false
+        };
+
+        setState({...state , ...newState});
+        target.style.backgroundColor = '#A2FFA2';
+        target.placeholder = '';
 
     };
 
- 
+    const handleRePasswordBlur = (event) => {
+
+        const target = event.target;
+        const value = target.value;
+        const {password} = state;
+        
+        if(value !== password) {
+
+            const newState = {};
+
+            newState['rePassword'] = '';
+            setState({...state , ...newState});
+
+            target.style.backgroundColor = '#FF4040'
+            target.placeholder = "Passwords don't match";
+
+            return;
+        };
+
+        const newState = {
+            buttonIsDisabled: false
+        };
+
+        setState({...state , ...newState});
+        target.style.backgroundColor = '#A2FFA2';
+        target.placeholder = '';
+    }
+
+    const {username , password , rePassword , passwordIsDisabled , rePasswordIsDisabled , buttonIsDisabled} = state;
     
     return (
         
@@ -95,7 +170,7 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Username</FormLabel>
-                    <InputField value={state.username} 
+                    <InputField value={username} 
                         onChange={e => handleChange(e , 'username')}
                         onBlur={e => handleUserNameBlur(e)}
                     />
@@ -103,15 +178,32 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Password</FormLabel>
-                    <InputField type="password" value={state.password} onChange={e => handleChange(e , 'password')}/>
+                        <InputField 
+                            type="password" 
+                            value={password}
+                            disabled={passwordIsDisabled}
+                            onChange={e => handleChange(e , 'password')}
+                            onBlur={e => handlePasswordBlur(e)}
+                        />
                 </InputContainer>
 
                 <InputContainer>
                     <FormLabel>Repeat Password</FormLabel>
-                    <InputField type="password" value={state.rePassword} onChange={e => handleChange(e , 'rePassword')} onBlur={e => handleBlur(e)}/>
+                    <InputField 
+                        type="password" 
+                        value={rePassword}
+                        disabled={rePasswordIsDisabled} 
+                        onChange={e => handleChange(e , 'rePassword')} 
+                        onBlur={e => handleRePasswordBlur(e)}/>
                 </InputContainer>
 
-                <Button type="submit" onClick={e => handleSubmit(e)}>Register</Button>
+                <Button 
+                    type="submit"
+                    disabled={buttonIsDisabled}
+                    onClick={e => handleSubmit(e)}
+                >
+                        Register
+                </Button>
 
                 <FormParagraph>Already have an account? <LinkComponent href="/login" type="formLink" text="Login"/></FormParagraph>
 

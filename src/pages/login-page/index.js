@@ -14,6 +14,8 @@ const LoginPage = () => {
     const initialState = {
         username: '',
         password: '',
+        passwordIsDisabled: true,
+        buttonIsDisabled: true
     }
 
     const [state , setState] = useState(initialState);
@@ -62,7 +64,77 @@ const LoginPage = () => {
 
     };
 
- 
+    const handleUsernameBlur = async (event) => {
+
+        const target = event.target;
+        const value = target.value;
+        const url = `http://localhost:9999/api/user/${value}`;
+
+        const promise = await fetch(url);
+        const response = await promise.json();
+
+        if (response[0]) {
+
+            const newState = {
+                passwordIsDisabled: false
+            };
+    
+            setState({...state , ...newState});
+            target.style.backgroundColor = '#A2FFA2';
+            target.placeholder = '';
+
+            return;
+
+        };
+
+        const newState = {};
+
+        newState['username'] = '';
+        setState({...state , ...newState});
+        
+        target.style.backgroundColor = '#FF4040'
+        target.placeholder = 'Invalid Username';
+
+    };
+
+    const handlePasswordBlur = async (event) => {
+
+        const target = event.target;
+        const password = target.value;
+        const {username} = state;
+        const data = {username , password};
+
+        const headerObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const url = 'http://localhost:9999/api/user/verifyPassword';
+
+        const promise = await fetch(url , headerObj);
+
+        if(promise.status !== 200) {
+            target.value = ''
+            target.style.backgroundColor = '#FF4040'
+            target.placeholder = 'Invalid Password';
+
+            return;
+        };
+
+        const newState = {
+            buttonIsDisabled: false
+        };
+
+        setState({...state , ...newState});
+        target.style.backgroundColor = '#A2FFA2';
+        target.placeholder = '';
+
+    }
+
+    const {username , password , passwordIsDisabled , buttonIsDisabled} = state;
     
     return (
         
@@ -72,15 +144,29 @@ const LoginPage = () => {
 
                 <InputContainer>
                     <FormLabel>Username</FormLabel>
-                    <InputField value={state.username} onChange={e => handleChange(e , 'username')}/>
+                    <InputField 
+                        value={username} 
+                        onChange={e => handleChange(e , 'username')}
+                        onBlur={e => handleUsernameBlur(e)}
+                    />
                 </InputContainer>
 
                 <InputContainer>
                     <FormLabel>Password</FormLabel>
-                    <InputField type="password" value={state.password} onChange={e => handleChange(e , 'password')}/>
+                    <InputField 
+                        type="password" value={password}
+                        disabled={passwordIsDisabled}
+                        onChange={e => handleChange(e , 'password')}
+                        onBlur={e => handlePasswordBlur(e)}
+                    />
                 </InputContainer>
 
-                <Button type="submit" onClick={e => handleSubmit(e)}>Login</Button>
+                <Button type="submit" 
+                    onClick={e => handleSubmit(e)}
+                    disabled={buttonIsDisabled}
+                >
+                    Login
+                </Button>
 
                 <FormParagraph>Not registered yet? <LinkComponent href="/register" type="formLink" text="Register"/></FormParagraph>
 

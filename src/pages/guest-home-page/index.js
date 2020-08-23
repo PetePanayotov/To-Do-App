@@ -10,7 +10,7 @@ const GuestHomePage = () => {
     return(
 
         <PageWrapper page="guestPage">
-            <TitleParagraph>Own Today!</TitleParagraph>
+            <TitleParagraph>#OwnToday!</TitleParagraph>
         </PageWrapper>
 
     )

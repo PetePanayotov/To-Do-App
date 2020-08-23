@@ -9,17 +9,15 @@ const generateToken = async data => {
     return token;
 };
 
-const getUsers = async (req , res , next) => {
+const getUser = async (req , res , next) => {
+
+    const {username} = req.params;
 
     try {
         
-        const users = await User.find();
-        
-        if (!users) {
-            throw new Error();
-        };
+        const user = await User.find({username});
 
-        res.send(users);
+        res.send(user);
 
     } catch (error) {
         next();
@@ -60,18 +58,13 @@ const registerUser = async (req , res , next) => {
     };
 };
 
-const loginUser = async (req , res , next) => {
+const verifyPassword = async (req , res , next) => {
 
     const {username , password} = req.body;
 
     try {
         
         const user = await User.findOne({username});
-        
-        if (!user) {
-            res.status(401);
-            throw new Error();
-        };
 
         const passwordsMatch = await bcrypt.compare(password , user.password);
     
@@ -88,7 +81,7 @@ const loginUser = async (req , res , next) => {
             res.header('Authorization' , token).send(user);
 
         }else{
-            res.status(401).send('Invalid password');
+            res.status(401).send({});
             return;
         }
         
@@ -195,9 +188,9 @@ const getUserWithCars = async (req , res , next) => {
 
 
 module.exports = {
-    getUsers,
+    getUser,
     registerUser,
-    loginUser,
+    verifyPassword,
     updatedUser,
     deleteUser,
     verifyUser,
