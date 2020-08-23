@@ -7,7 +7,7 @@ import LinkComponent from '../link';
 import paragraphsObj from '../paragraph';
 import getNavigation from '../../utils/getNavigation';
 
-const {Paragraph} = paragraphsObj;
+const {FooterParagraph} = paragraphsObj;
 
 const PageWrapper = (props) => {
 
@@ -32,7 +32,7 @@ const PageWrapper = (props) => {
                 {props.children}
             </Main>
             <Footer>
-                <Paragraph>Just Do It</Paragraph>
+                <FooterParagraph>Just Do It</FooterParagraph>
             </Footer>
         </div>
     )

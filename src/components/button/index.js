@@ -6,15 +6,15 @@ const Button = styled.button `
     height: 7%;
     align-self: center;
     font-size: 16px;
-    color: #ffffff;
-    background-color: #0379FF;
-    border: 1px solid #0379FF;
+    color: #0379FF;
+    background-color: #ffffff;
+    border: 1px solid #BEBECE;
     border-radius: 5px;
 
     &:hover {
         cursor: pointer;
-        color: #0379FF;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #0379FF;
     }
 
 `;

@@ -11,6 +11,8 @@ const Form = styled.form `
     align-self: center;
     margin: 0 auto;
     border: 1px solid #282C34;
+    border-radius: 5px;
+    opacity: 0.80;
 
 `;
 
