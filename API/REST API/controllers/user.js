@@ -13,16 +13,15 @@ const getUser = async (req , res , next) => {
 
     const {username} = req.params;
 
-    try {
+
+    const [user] = await User.find({username});
+   
+    if (user) {
         
-        const user = await User.find({username});
-
-        res.send(user);
-
-    } catch (error) {
-        next();
+        return res.send(user);
     };
 
+     return res.status(404).send('Invalid Username');
 
 };
 
