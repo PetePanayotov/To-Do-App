@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const FormLabel = styled.label `
 
     text-align: center;
-    font-size: 22px;
+    font-size: 25px;
+    font-weight: 400;
 
 `;
 
