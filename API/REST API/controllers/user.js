@@ -2,7 +2,7 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../config/config');
-const {cookieName , privateKey} = config;
+const {privateKey} = config;
 
 const generateToken = async data => {
     const token = await jwt.sign(data , privateKey);
@@ -98,20 +98,24 @@ const verifyUser = async (req , res , next) => {
     
     const {username , userId} = decodeObj;
 
-    const user = await User.findOne({_id:userId});
-    
-    let isAdmin = false;
+    try {
 
-    if (user.isAdmin) {
-        isAdmin = true;
+        const user = await User.findOne({_id:userId});
+
+        if (!user) {
+            throw new Error();
+        };
+
+        const userInfo = {
+            username,
+            userId
+        };
+
+        res.send(userInfo);
+    }
+    catch {
+        next();
     };
-
-    const userInfo = {
-        username,
-        userId
-    };
-
-    res.send([isAdmin , userInfo]);
 
 };
 

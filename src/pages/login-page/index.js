@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
+import {useHistory} from 'react-router-dom';
+import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import InputContainer from '../../components/form-input-div';
 import FormLabel from '../../components/form-label';
@@ -10,7 +12,7 @@ import paragraphsObj from '../../components/paragraph';
 import loginPageHandlers from '../../utils/login-register-page-handlers';
 
 const {FormParagraph} = paragraphsObj;
-const {handleChange , handleLoginUsernameBlur , handleLoginPasswordBlur} = loginPageHandlers;
+const {handleChange, login , handleLoginUsernameBlur , handleLoginPasswordBlur} = loginPageHandlers;
 
 const initialState = {
     username: '',
@@ -21,40 +23,9 @@ const initialState = {
 
 const LoginPage = () => {
 
+    const context = useContext(UserContext);
+    const history = useHistory();
     const [state , setState] = useState(initialState);
-
-    const handleSubmit = async (event) => {
-
-        // event.preventDefault();
-
-        // const data = {};
-        // Object.assign(data , state);
-        
-        // const headerObj = {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // };
-
-        // const url = 'http://localhost:9999/api/user/login';
-
-        // try {
-            
-        //     const user = await fetch(url , headerObj);
-            
-        //     if (!user) {
-        //         throw new Error();
-        //     };
-
-        //     console.log('Successfully Logged In')
-
-        // } catch (error) {
-        //     console.log(error)
-        // };
-
-    };
 
     const {username , password , passwordIsDisabled , buttonIsDisabled} = state;
     
@@ -84,7 +55,7 @@ const LoginPage = () => {
                 </InputContainer>
 
                 <Button type="submit" 
-                    onClick={e => handleSubmit(e)}
+                    onClick={e => login(e , context , history , state)}
                     disabled={buttonIsDisabled}
                 >
                     Login

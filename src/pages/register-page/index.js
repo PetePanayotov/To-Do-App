@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
+import {useHistory} from 'react-router-dom';
+import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import InputContainer from '../../components/form-input-div';
 import FormLabel from '../../components/form-label';
@@ -11,7 +13,7 @@ import registerPageHandlers from '../../utils/login-register-page-handlers'
 
 
 const {FormParagraph} = paragraphsObj;
-const {handleChange , handleSubmit , handleUserNameBlur , handlePasswordBlur , handleRePasswordBlur} = registerPageHandlers;
+const {handleChange , register , handleUserNameBlur , handlePasswordBlur , handleRePasswordBlur} = registerPageHandlers;
 
 const initialState = {
     username: '',
@@ -25,6 +27,8 @@ const initialState = {
 
 const RegisterPage = () => {
 
+    const context = useContext(UserContext);
+    const history = useHistory();
     const [state , setState] = useState(initialState);
 
     const {username , password , rePassword , passwordIsDisabled , rePasswordIsDisabled , buttonIsDisabled} = state;
@@ -61,13 +65,14 @@ const RegisterPage = () => {
                         value={rePassword}
                         disabled={rePasswordIsDisabled} 
                         onChange={e => handleChange(e , state , setState , 'rePassword')} 
-                        onBlur={e => handleRePasswordBlur(e , state , setState)}/>
+                        onBlur={e => handleRePasswordBlur(e , state , setState)}
+                    />
                 </InputContainer>
 
                 <Button 
                     type="submit"
                     disabled={buttonIsDisabled}
-                    onClick={e => handleSubmit(e , state)}
+                    onClick={e => register(e , context , history ,state)}
                 >
                         Register
                 </Button>
