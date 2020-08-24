@@ -1,5 +1,4 @@
 const express = require('express');
-const config = require('../config/config');
 const router = express.Router();
 const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , deleteUser , getUserWithCars} = require('../controllers/user');
 

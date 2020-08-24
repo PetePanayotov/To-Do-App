@@ -1,50 +1,109 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { getRoles } from '@testing-library/react';
+import React , {Component} from 'react';
+import UserContext from './Context';
 
-const App = () => {
+function getCookie(name) {
+    let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+};
 
-  // const [posts , setPosts] = useState([]);
-  // const [loading , setLoading] = useState(false);
-  // const [currentPage , setCurrentPage] = useState(1);
-  // const [postsPerPage , setPostsPerPage] = useState(10); 
+class App extends Component {
 
+    constructor(props) {
+        super(props);
 
-  // useEffect(() => {
+        this.state = {
+            isLoggedIn: null,
+            user: {},
 
-  //   const getPosts = async () => {
-  //     setLoading(true);
-  //     const url = 'https://jsonplaceholder.typicode.com/posts'
-  //     const promise = await fetch(url);
+        }
+    };
 
-  //     const response = await promise.json();
-  //     setPosts(response);
-  //     setLoading(false);
+    login = (user) => {
+        
+        this.setState({
+            isLoggedIn: true,
+            user,
+ 
+        });
+    };
+
+    logout = () => {
+        document.cookie = "oreo= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+        
+        this.setState({
+            isLoggedIn: false,
+            user: {},
+
+        });
+
+    };
+
+    componentDidMount() {
+
+        (async () => {
+
+            const cookieValue = getCookie('oreo');
+
+            if (!cookieValue) {
+                return this.logout()
+                
+            };
+            
+            const url = 'http://localhost:9999/api/user/verify';
+            
+            const data = {token: cookieValue};
       
-  //   };
+            const headersObj = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+    
+            const promise = await fetch(url , headersObj);
 
-  //   getPosts();
+            if (promise.status === 200) {
+                
+                const user = await promise.json();
+                return this.login(user);
+            };
 
-  // }, []);
+            return this.logout();
+    
+        })();
 
-  // // Get Curren Posts
 
-  // const indexOfLastPost = currentPage * postsPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentPost = posts.slice(indexOfFirstPost , indexOfLastPost);
+    };
 
-  // // Change Page
+    render() {
 
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber)
+        const {isLoggedIn , user} = this.state;
 
-  // return (
-  //   <div className="container">
-  //       <h1>My Blog</h1>
-  //       <Post posts={currentPost} loading={loading}/>
-  //       <Pagination paginate={paginate} postsPerPage={postsPerPage} totalPost={posts.length}/>
-  //   </div>
-  // )
+        if (isLoggedIn === null) {
+            return(<div>Loading...</div>);
+        }
+
+        return(
+            <UserContext.Provider 
+                value = {{
+                    isLoggedIn,
+                    user,
+                    login: this.login,
+                    logout: this.logout
+    
+                }}
+            >
+                
+                {this.props.children}
+
+            </UserContext.Provider>
+        
+        )
+    }
 
 };
 
 export default App;
+
+

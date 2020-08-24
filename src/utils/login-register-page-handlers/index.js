@@ -30,7 +30,7 @@ export default {
         setState({...state , ...newState})
     },
 
-    handleSubmit : async (event , state) => {
+    register : async (event, context , history , state) => {
 
         event.preventDefault();
         
@@ -48,20 +48,67 @@ export default {
         const url = 'http://localhost:9999/api/user/register';
 
         try {
+
+            const promise = await fetch(url , headerObj);
+            const response = await promise.json();
             
-            const user = await fetch(url , headerObj);
-            
-            if (!user) {
+            if (!response) {
                 throw new Error();
             };
 
-            console.log('Successfully Registered')
+            const token = promise.headers.get('Authorization');
+ 
+            document.cookie = `oreo=${token}`;
+
+            context.login({
+                username: response.username,
+                userId: response._id
+            });
+
+            history.push('/')
 
         } catch (error) {
             console.log(error)
-        }
+        };
 
-    
+    },
+
+    login : async (event, context , history , state) => {
+
+        event.preventDefault();
+
+        const data = {};
+        Object.assign(data , state);
+        
+        const headerObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const url = 'http://localhost:9999/api/user/verifyPassword'
+
+        const promise = await fetch(url , headerObj);
+
+        if(promise.status === 200) {
+
+            const response = await promise.json();
+
+            const token = promise.headers.get('Authorization');
+ 
+            document.cookie = `oreo=${token}`;
+
+            context.login({
+                username: response.username,
+                userId: response._id
+            });
+
+            history.push('/')
+
+        };
+
     },
 
     handleUserNameBlur : async (event , state , setState) => {
