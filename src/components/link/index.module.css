@@ -6,6 +6,7 @@
 }
 
 .headerLink:hover {
+    padding-bottom: 3px;
     cursor: pointer;
     border-bottom: 2px solid #ffffff;
 }
@@ -22,4 +23,18 @@
 
     cursor: pointer;
     border-bottom: 1px solid;
+}
+
+.dropDown {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #0F508E;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropDown:hover {
+    
+    background-color: #dddddd;
 }
