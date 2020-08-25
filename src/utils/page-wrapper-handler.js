@@ -10,7 +10,7 @@ const handleMouseOver = (event) => {
 };
 
 const handleMouseOut = (event) => {
-
+    
     const link = event.target;
     const parent = link.parentNode;
 

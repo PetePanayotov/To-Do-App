@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div `
@@ -24,4 +23,17 @@ const DropDownContent = styled(Container) `
 
 `;
 
-export default {DropDownWrapper , DropDownContent};
+const AboutPageContainer = styled(Container) `
+
+    width: 70%;
+    height: 50%;
+    background-color: #FFFFE0;
+    opacity: 0.70;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+`;
+
+export default {DropDownWrapper , DropDownContent , AboutPageContainer};

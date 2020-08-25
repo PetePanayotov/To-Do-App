@@ -46,7 +46,7 @@ const PageWrapper = (props) => {
                                 Weather
                             </DropDownButton>
 
-                            <DropDownContent onMouseOut={e => handleMouseOut(e)}>
+                            <DropDownContent onMouseOver={e => handleMouseOut(e)}>
                                 <LinkComponent type="dropDown" href="" text="Today"/>
                                 <LinkComponent type="dropDown" href="" text="5-day"/>
                                 <LinkComponent type="dropDown" href="" text="16-day"/>
