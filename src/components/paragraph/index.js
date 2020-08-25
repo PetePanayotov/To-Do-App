@@ -5,7 +5,7 @@ const Paragraph = styled.p `
 `;
 
 const TitleParagraph = styled(Paragraph) `
-        width: 45%auto;
+        width: 45%;
         color: #BEBEBE;
         text-shadow: -5px 2px #000000;
         font-size: 100px;

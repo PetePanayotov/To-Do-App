@@ -1,17 +1,18 @@
-import React, { useState , useContext } from 'react';
+import React, { useState , useContext , useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import InputContainer from '../../components/form-input-div';
 import FormLabel from '../../components/form-label';
 import InputField from '../../components/form-input-field';
-import Button from '../../components/button';
 import Form from '../../components/form';
 import LinkComponent from '../../components/link';
+import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import registerPageHandlers from '../../utils/login-register-page-handlers'
 
 
+const {SubmitButton} = buttonsObj
 const {FormParagraph} = paragraphsObj;
 const {handleChange , register , handleUserNameBlur , handlePasswordBlur , handleRePasswordBlur} = registerPageHandlers;
 
@@ -26,6 +27,12 @@ const initialState = {
 
 
 const RegisterPage = () => {
+
+    useEffect(() => {
+
+        document.title = 'Register Page'
+
+    } , [])
 
     const context = useContext(UserContext);
     const history = useHistory();
@@ -69,13 +76,13 @@ const RegisterPage = () => {
                     />
                 </InputContainer>
 
-                <Button 
+                <SubmitButton 
                     type="submit"
                     disabled={buttonIsDisabled}
                     onClick={e => register(e , context , history ,state)}
                 >
                         Register
-                </Button>
+                </SubmitButton>
 
                 <FormParagraph>Already have an account? <LinkComponent href="/login" type="formLink" text="Login"/></FormParagraph>
 

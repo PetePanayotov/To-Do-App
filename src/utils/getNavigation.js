@@ -3,26 +3,25 @@ const getNavigation = (isLoggedIn) => {
     const loggedIn = [
 
         {
-            title: 'Profile'
+            title: 'Profile',
+            href: '/prfile/'
         },
 
         {
             title: 'Home',
+            href: '/'
 
         },
 
         {
-            title: 'Create'
+            title: 'Plan',
+            href: '/plan'
         },
         
         {
             title: 'About',
+            href: '/about'
         },
-
-        {
-            title: 'Logout'
-        }
-
 
 
     ]
