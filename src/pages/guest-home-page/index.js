@@ -14,7 +14,7 @@ const GuestHomePage = () => {
 
     return(
 
-        <PageWrapper page="guestPage">
+        <PageWrapper withVideo={true}>
             <TitleParagraph>#OwnToday!</TitleParagraph>
         </PageWrapper>
 

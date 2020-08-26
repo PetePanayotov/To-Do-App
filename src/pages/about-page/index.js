@@ -13,7 +13,7 @@ const AboutPage = () => {
     } , []);
 
     return (
-        <PageWrapper>
+        <PageWrapper withVideo={true}>
             <AboutPageContainer>
                 <AboutPageTitleParagraph>To-Do App</AboutPageTitleParagraph>
                 <AboutPageParagraph>

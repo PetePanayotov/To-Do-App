@@ -4,6 +4,7 @@ import GuestHomePage from './pages/guest-home-page';
 import RegisterPage from './pages/register-page';
 import LoginPage from './pages/login-page';
 import AboutPage from './pages/about-page';
+import ForecastPage from './pages/forecast-page';
 
 
 class Navigation extends Component {
@@ -17,6 +18,8 @@ class Navigation extends Component {
                     <Route path="/register" component={RegisterPage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/about" component={AboutPage}/>
+                    <Route path="/forecast" component={ForecastPage}/>
+                    
                 </Switch>
             </BrowserRouter>
         )
