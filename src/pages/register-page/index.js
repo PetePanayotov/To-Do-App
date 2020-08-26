@@ -6,12 +6,13 @@ import InputContainer from '../../components/form-input-div';
 import FormLabel from '../../components/form-label';
 import InputField from '../../components/form-input-field';
 import Form from '../../components/form';
-import LinkComponent from '../../components/link';
+import linksObj from '../../components/link';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import registerPageHandlers from '../../utils/login-register-page-handlers'
 
 
+const {FormLink} = linksObj;
 const {SubmitButton} = buttonsObj
 const {FormParagraph} = paragraphsObj;
 const {handleChange , register , handleUserNameBlur , handlePasswordBlur , handleRePasswordBlur} = registerPageHandlers;
@@ -42,7 +43,7 @@ const RegisterPage = () => {
     
     return (
         
-        <PageWrapper>
+        <PageWrapper withVideo={true}>
            
             <Form>
 
@@ -84,7 +85,12 @@ const RegisterPage = () => {
                         Register
                 </SubmitButton>
 
-                <FormParagraph>Already have an account? <LinkComponent href="/login" type="formLink" text="Login"/></FormParagraph>
+                <FormParagraph>
+                    Already have an account?
+
+                    <FormLink to="/login"> Login</FormLink>
+
+                </FormParagraph>
 
             </Form>
 

@@ -1,10 +1,10 @@
-const getNavigation = (isLoggedIn) => {
+const getNavigation = (isLoggedIn , username ,userId) => {
 
     const loggedIn = [
 
         {
-            title: 'Profile',
-            href: '/prfile/'
+            title: `[${username}]`,
+            href: `/profile/${userId}`
         },
 
         {

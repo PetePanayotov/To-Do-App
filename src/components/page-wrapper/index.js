@@ -5,13 +5,14 @@ import Header from '../header';
 import Main from '../main';
 import Footer from '../footer';
 import LinkContainer from '../link-container';
-import LinkComponent from '../link';
+import linksObj from '../link';
 import containerObj from '../container';
 import buttonsObj from '../button';
 import paragraphsObj from '../paragraph';
 import getNavigation from '../../utils/getNavigation';
 import handlers from '../../utils/page-wrapper-handler';
 
+const {HeaderLink , DropDownLink} = linksObj;
 const {DropDownWrapper , DropDownContent} = containerObj;
 const {DropDownButton , LogoutButton} = buttonsObj;
 const {FooterParagraph} = paragraphsObj;
@@ -21,10 +22,9 @@ const {handleMouseOver , handleMouseOut} = handlers;
 const PageWrapper = (props) => {
 
     const context = useContext(UserContext);
+    const {isLoggedIn , user} = context;
     const history = useHistory()
-    const linksArray = getNavigation(context.isLoggedIn);
-    
-    const mainPage = props.page ? 'guestPage' : undefined;
+    const linksArray = getNavigation(isLoggedIn , user.username ,user.userId);
 
     const logout = () => {
 
@@ -32,7 +32,7 @@ const PageWrapper = (props) => {
         history.push('/')
 
     }
-    
+
     return (
         <div>
             <Header>
@@ -47,9 +47,9 @@ const PageWrapper = (props) => {
                             </DropDownButton>
 
                             <DropDownContent onMouseOver={e => handleMouseOut(e)}>
-                                <LinkComponent type="dropDown" href="" text="Today"/>
-                                <LinkComponent type="dropDown" href="" text="5-day"/>
-                                <LinkComponent type="dropDown" href="" text="16-day"/>
+                                <DropDownLink to="/forecast">Today</DropDownLink>
+                                <DropDownLink to="/forecast">Tomorrow</DropDownLink>
+                                <DropDownLink to="/forecast">5-Day</DropDownLink>
                             </DropDownContent>
 
                         </DropDownWrapper>
@@ -58,7 +58,7 @@ const PageWrapper = (props) => {
                     {
                         linksArray.map( ({title , href} , i) => {
 
-                            return <LinkComponent key={i} type="headerLink" href={href} text={title}/>
+                            return <HeaderLink key={i} to={href}>{title}</HeaderLink>
 
                         })
                     }
@@ -70,7 +70,7 @@ const PageWrapper = (props) => {
                     }
                 </LinkContainer>
             </Header>
-            <Main page={mainPage}>
+            <Main hasVideo={props.withVideo}>
                 {props.children}
             </Main>
             <Footer>
