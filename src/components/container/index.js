@@ -36,4 +36,35 @@ const AboutPageContainer = styled(Container) `
 
 `;
 
-export default {DropDownWrapper , DropDownContent , AboutPageContainer};
+const WeatherForecastConteiner = styled(Container) `
+
+    width: 95%;
+    height: 90%;
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+`;
+
+const ForeCastUnitWrapper = styled(Container) `
+
+    border-left: 1px solid #BCBCBA;
+    border-right: 1px solid #BCBCBA;
+    height: 80%;
+    max-width: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+`;
+
+const ForeCstImageWrapper = styled(Container) `
+
+    width: 90%;
+    height: 28%;
+    align-self: center;
+   
+`;
+
+export default {DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper};

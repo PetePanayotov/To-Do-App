@@ -3,16 +3,17 @@ import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import InputContainer from '../../components/form-input-div';
-import FormLabel from '../../components/form-label';
 import InputField from '../../components/form-input-field';
 import Form from '../../components/form';
 import linksObj from '../../components/link';
+import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import registerPageHandlers from '../../utils/login-register-page-handlers'
 
 
 const {FormLink} = linksObj;
+const {FormLabel} = labelsObj;
 const {SubmitButton} = buttonsObj
 const {FormParagraph} = paragraphsObj;
 const {handleChange , register , handleUserNameBlur , handlePasswordBlur , handleRePasswordBlur} = registerPageHandlers;
