@@ -47,9 +47,9 @@ const PageWrapper = (props) => {
                             </DropDownButton>
 
                             <DropDownContent onMouseOver={e => handleMouseOut(e)}>
-                                <DropDownLink to="/forecast">Today</DropDownLink>
-                                <DropDownLink to="/forecast">Tomorrow</DropDownLink>
-                                <DropDownLink to="/forecast">5-Day</DropDownLink>
+                                <DropDownLink to="/forecast?frc=current">Today</DropDownLink>
+                                <DropDownLink to="/forecast?frc=48hour">48-Hour</DropDownLink>
+                                <DropDownLink to="/forecast?frc=7Day">7-Day</DropDownLink>
                             </DropDownContent>
 
                         </DropDownWrapper>

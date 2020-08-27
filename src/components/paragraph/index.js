@@ -45,4 +45,12 @@ const AboutPageParagraph = styled(Paragraph) `
     text-align :center;
 `;
 
-export default {TitleParagraph , FooterParagraph , FormParagraph , AboutPageTitleParagraph , AboutPageParagraph};
+const WeatherFrcUnitParagraph = styled(Paragraph) `
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+
+`
+
+export default {TitleParagraph , FooterParagraph , FormParagraph , AboutPageTitleParagraph , AboutPageParagraph , WeatherFrcUnitParagraph};
