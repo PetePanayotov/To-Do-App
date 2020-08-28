@@ -102,10 +102,12 @@ export default {
 
     getTimeAndDate: (string) => {
 
-        const [dateString , time] = string.split(' ');
-        let [y , m , dd] = dateString.split('-');
-    
-        let date = `${dd}.${m}.${y}`;
+        const [dateString , timeString] = string.split(' ');
+        const [y , m , dd] = dateString.split('-');
+        const [hr , min , ] = timeString.split(':');
+        
+        const time = `${hr}:${min}`;
+        const date = `${dd}.${m}.${y}`;
     
         return [time , date];
     
