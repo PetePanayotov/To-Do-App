@@ -10,7 +10,7 @@ const {ForeCastUnitWrapper , ForeCstImageWrapper} = containersObj;
 const {WeatherFrcUnitParagraph} = paragraphsObj;
 const {MinTempLabel , MaxTempLabel} = labelsObj;
 
-const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD}) => {
+const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD , image , description}) => {
 
 
     return (
@@ -24,7 +24,7 @@ const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD
             </WeatherFrcUnitParagraph>
 
             <ForeCstImageWrapper>
-                <ForeCstImage src={sunnyImage} alt="weather"/>
+                <ForeCstImage src={image} alt="weather"/>
             </ForeCstImageWrapper>
 
             <WeatherFrcUnitParagraph>
@@ -32,6 +32,10 @@ const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD
                     /
                 <MaxTempLabel> {maxTemp}&#176;</MaxTempLabel>
 
+            </WeatherFrcUnitParagraph>
+
+            <WeatherFrcUnitParagraph>
+                {description}
             </WeatherFrcUnitParagraph>
 
             <WeatherFrcUnitParagraph>
