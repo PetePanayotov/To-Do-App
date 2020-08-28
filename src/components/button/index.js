@@ -58,4 +58,23 @@ const LogoutButton = styled(Button) `
 
 `;
 
-export default {SubmitButton , DropDownButton , LogoutButton};
+const ArrowButton = styled(Button) `
+
+    height: 40%;
+    opacity: 0.5;
+    font-size: 40px;
+    outline: none;
+    background-color:#D9D6D5;
+    border: 1px solid #D9D6D5;
+    border-radius: 20px;
+    color: #ACACA8;
+    
+    &:hover {
+        
+        cursor: pointer;
+        opacity: 1;
+        
+    }
+`;
+
+export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton};

@@ -14,7 +14,9 @@ const ForecastPage = () => {
 
     const getWeather = async () => {
 
-        const promise = await fetch('https://api.openweathermap.org/data/2.5/onecall?lat=42.698334&lon=23.319941&exclude=hourly,minutely,current&appid=9f02b6cf369ed5a363a78ce2be815314&units=metric')
+        const url = 'https://api.openweathermap.org/data/2.5/onecall?lat=42.698334&lon=23.319941&exclude=hourly,minutely,current&appid=9f02b6cf369ed5a363a78ce2be815314&units=metric';
+
+        const promise = await fetch(url)
         
         const response = await promise.json();
 
@@ -50,7 +52,18 @@ const ForecastPage = () => {
                         const {description} = obj.weather[0];
                         const image = getImage(condition , description);
                         
-                        return <ForeCastUnit description={description} image={image} windD={windD} pressure={pressure} windS={windS} maxTemp={maxTemp} minTemp={minTemp} day={day} date={date} key={i}/>
+                        return <ForeCastUnit 
+                                    key={i}
+                                    day={day} 
+                                    date={date} 
+                                    image={image} 
+                                    minTemp={minTemp} 
+                                    maxTemp={maxTemp} 
+                                    description={description} 
+                                    windS={windS} 
+                                    windD={windD} 
+                                    pressure={pressure} 
+                                />
 
                     })
                 }

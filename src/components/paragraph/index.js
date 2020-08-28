@@ -48,7 +48,8 @@ const AboutPageParagraph = styled(Paragraph) `
 const WeatherFrcUnitParagraph = styled(Paragraph) `
     margin: 0;
     text-align: center;
-    font-size: 16px;
+    font-size: ${props => props.title ? '24px' : '16px'};
+    color: ${props => props.date ? '#BCBCBA' : '#000000'};
     font-family: Arial, Helvetica, sans-serif;
 
 `

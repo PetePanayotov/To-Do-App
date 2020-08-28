@@ -17,7 +17,7 @@ const ForeCastUnit = ({isHourFrc , time , day, temp , date , minTemp , maxTemp ,
             {
                 isHourFrc &&
 
-                <WeatherFrcUnitParagraph>
+                <WeatherFrcUnitParagraph title='true'>
                     {time}
                 </WeatherFrcUnitParagraph>
 
@@ -26,13 +26,13 @@ const ForeCastUnit = ({isHourFrc , time , day, temp , date , minTemp , maxTemp ,
             {
                 !isHourFrc &&
 
-                <WeatherFrcUnitParagraph>
+                <WeatherFrcUnitParagraph title='true'>
                     {day}
                 </WeatherFrcUnitParagraph>
 
             }
 
-            <WeatherFrcUnitParagraph>
+            <WeatherFrcUnitParagraph date='true'>
                 {date}
             </WeatherFrcUnitParagraph>
 
