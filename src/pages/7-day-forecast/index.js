@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import ForeCastUnit from '../../components/forecast-unit';
 import containersObj from '../../components/container';
-import handlers from '../../utils/forecast-page-handlers/';
+import handlers from '../../utils/forecast-page-handlers';
 
 const {WeatherForecastConteiner} = containersObj;
 const {getDateString , getDate , getDay , getWindDirection , getImage} = handlers;

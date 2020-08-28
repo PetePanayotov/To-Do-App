@@ -4,7 +4,8 @@ import GuestHomePage from './pages/guest-home-page';
 import RegisterPage from './pages/register-page';
 import LoginPage from './pages/login-page';
 import AboutPage from './pages/about-page';
-import ForecastPage from './pages/forecast-page';
+import SevenDayForecastPage from './pages/7-day-forecast';
+import FortyEightHourForecast from './pages/48-hour-forecast';
 
 
 class Navigation extends Component {
@@ -18,7 +19,8 @@ class Navigation extends Component {
                     <Route path="/register" component={RegisterPage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/about" component={AboutPage}/>
-                    <Route path="/forecast" component={ForecastPage}/>
+                    <Route path="/seven-day-forecast" component={SevenDayForecastPage}/>
+                    <Route path="/48-hour-forecast" component={FortyEightHourForecast}/>
                     
                 </Switch>
             </BrowserRouter>
