@@ -1,6 +1,5 @@
 import React from 'react';
 import ForeCstImage from '../forecast-image';
-import sunnyImage from '../../images/synny.jpg';
 import containersObj from '../../components/container';
 import paragraphsObj from '../../components/paragraph';
 import labelsObj from '../../components/label';
@@ -10,14 +9,28 @@ const {ForeCastUnitWrapper , ForeCstImageWrapper} = containersObj;
 const {WeatherFrcUnitParagraph} = paragraphsObj;
 const {MinTempLabel , MaxTempLabel} = labelsObj;
 
-const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD , image , description}) => {
+const ForeCastUnit = ({isHourFrc , time , day, temp , date , minTemp , maxTemp , windS , pressure , windD , image , description}) => {
 
 
     return (
         <ForeCastUnitWrapper>
-            <WeatherFrcUnitParagraph>
-                {day}
-            </WeatherFrcUnitParagraph>
+            {
+                isHourFrc &&
+
+                <WeatherFrcUnitParagraph>
+                    {time}
+                </WeatherFrcUnitParagraph>
+
+            }
+
+            {
+                !isHourFrc &&
+
+                <WeatherFrcUnitParagraph>
+                    {day}
+                </WeatherFrcUnitParagraph>
+
+            }
 
             <WeatherFrcUnitParagraph>
                 {date}
@@ -27,12 +40,25 @@ const ForeCastUnit = ({day , date , minTemp , maxTemp , windS , pressure , windD
                 <ForeCstImage src={image} alt="weather"/>
             </ForeCstImageWrapper>
 
-            <WeatherFrcUnitParagraph>
-                <MinTempLabel>{minTemp}&#176; </MinTempLabel>
-                    /
-                <MaxTempLabel> {maxTemp}&#176;</MaxTempLabel>
+            {
+                isHourFrc &&
 
-            </WeatherFrcUnitParagraph>
+                <WeatherFrcUnitParagraph>
+                    {temp}&#176;
+                </WeatherFrcUnitParagraph>
+            }
+
+            {
+                !isHourFrc &&
+
+                <WeatherFrcUnitParagraph>
+                    <MinTempLabel>{minTemp}&#176; </MinTempLabel>
+                        /
+                    <MaxTempLabel> {maxTemp}&#176;</MaxTempLabel>
+
+                </WeatherFrcUnitParagraph>
+
+            }
 
             <WeatherFrcUnitParagraph>
                 {description}

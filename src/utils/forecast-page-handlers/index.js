@@ -98,6 +98,17 @@ export default {
 
         return conditionsObj[condition];
 
+    },
+
+    getTimeAndDate: (string) => {
+
+        const [dateString , time] = string.split(' ');
+        let [y , m , dd] = dateString.split('-');
+    
+        let date = `${dd}.${m}.${y}`;
+    
+        return [time , date];
+    
     }
 
 };
