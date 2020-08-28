@@ -1,10 +1,12 @@
 import React , {useState , useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
 import ForeCastUnit from '../../components/forecast-unit';
 import containersObj from '../../components/container';
+import handlers from '../../utils/forecast-page-handlers/';
 
 const {WeatherForecastConteiner} = containersObj;
+const {getDateString , getDate , getDay , getWindDirection , getImage} = handlers;
+
 
 const ForecastPage = () => {
 
@@ -44,8 +46,11 @@ const ForecastPage = () => {
                         const windS = Math.round(obj['wind_speed']);
                         const windD = getWindDirection();
                         const pressure = obj.pressure;
+                        const condition = obj.weather[0].main;
+                        const {description} = obj.weather[0];
+                        const image = getImage(condition , description);
                         
-                        return <ForeCastUnit windD={windD} pressure={pressure} windS={windS} maxTemp={maxTemp} minTemp={minTemp} day={day} date={date} key={i}/>
+                        return <ForeCastUnit description={description} image={image} windD={windD} pressure={pressure} windS={windS} maxTemp={maxTemp} minTemp={minTemp} day={day} date={date} key={i}/>
 
                     })
                 }
@@ -55,71 +60,5 @@ const ForecastPage = () => {
 
 };
 
-function getDateString (number) {
-
-    const date = new Date(number * 1000);
-    
-    return date.toUTCString();
-
-};
-
-function getDate(string) {
-
-    const monthsObj = {
-
-        Aug: '08',
-        Sep: '09',
-        Oct: '10',
-        Nov: '11',
-        Dec: '12'
-    };
-
-    const [ , date , month , year, ] = string.split(' ');
-
-    return `${date}.${monthsObj[month]}.${year}`;
-};
-
-function getDay (string) {
-    
-    const [dayAbb , ] = string.split(',')
-   
-    const daysObj = {
-        Mon: 'Monday',
-        Tue: 'Tuesday',
-        Wed: 'Wednesday',
-        Thu: 'Thursday',
-        Fri: 'Friday',
-        Sat: 'Saturday',
-        Sun: 'Sunday'
-
-    };
-
-    return daysObj[dayAbb];
-
-};
-
-function getWindDirection () {
-
-    const directionsObj = {
-
-        0: 'North',
-        1: 'East',
-        2: 'South',
-        3: 'West',
-        4: 'North-East',
-        5: 'North-West',
-        6: 'South-East',
-        7: 'South-West',
-
-    }
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    };
-
-    const randomInt = getRandomInt(7);
-
-    return directionsObj[randomInt];
-};
 
 export default ForecastPage;
