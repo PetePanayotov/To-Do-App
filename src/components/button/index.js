@@ -77,4 +77,27 @@ const ArrowButton = styled(Button) `
     }
 `;
 
-export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton};
+const FinishButton = styled(Button) `
+
+    margin-left: 85%;
+    font-size: 22px;
+    font-weight: 500;
+    width: 10%;
+    height: 25%;
+    outline: none;
+    color: #0F508E;
+    background-color: #ffffff;
+    border: 2px solid #0F508E;
+    border-radius: 10px;
+
+    &:hover {
+        
+        cursor: pointer;
+        color: #ffffff;
+        background-color: #0F508E;
+        
+    }
+
+`;
+
+export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton , FinishButton};

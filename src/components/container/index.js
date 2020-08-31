@@ -4,6 +4,17 @@ const Container = styled.div `
 
 `;
 
+const Main = styled(Container) `
+
+    width: 100%;
+    height: 82vh;
+    display: flex;
+    flex-direction: ${props => props.direction === 'column' ? 'column' : 'row'};
+    justify-content: ${props => props.direction === 'column' ? 'space-evenly' : 'center'};
+   
+
+`
+
 const DropDownWrapper = styled(Container) `
 
     position: relative;
@@ -67,4 +78,15 @@ const ForeCstImageWrapper = styled(Container) `
    
 `;
 
-export default {DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper};
+const ActivitContainer = styled(Container) `
+
+    width: 70%;
+    max-height: 25%;
+    border: 2px solid #0F508E;
+    border-radius: 30px;
+    padding-bottom: 15px;
+    margin: 0 auto;
+
+`;
+
+export default {Main , DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivitContainer};

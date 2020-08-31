@@ -35,7 +35,7 @@ const ForecastPage = () => {
     const itemsToRender = state.daily.slice(0 , state.daily.length - 1)
 
     return(
-        <PageWrapper>
+        <PageWrapper withVideo={false}>
             <WeatherForecastConteiner>
                 {
                     itemsToRender.map((obj , i) => {

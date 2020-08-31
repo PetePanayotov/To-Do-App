@@ -4,7 +4,7 @@ const getNavigation = (isLoggedIn , username ,userId) => {
 
         {
             title: `[${username}]`,
-            href: `/profile/${userId}`
+            href: `/profile?id=${userId}`
         },
 
         {
