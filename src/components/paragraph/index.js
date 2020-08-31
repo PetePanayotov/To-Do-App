@@ -54,4 +54,27 @@ const WeatherFrcUnitParagraph = styled(Paragraph) `
 
 `
 
-export default {TitleParagraph , FooterParagraph , FormParagraph , AboutPageTitleParagraph , AboutPageParagraph , WeatherFrcUnitParagraph};
+const ActivityTitleParagraph = styled(Paragraph) `
+
+    font-size: 30px;
+    margin-top: -24px;
+    margin-left: 70px;
+    color: #0F508E;
+    text-align: center;
+    width: 27%;
+    background: #ffffff;
+    margin-bottom: 0;
+
+
+`;
+
+const ActivityParagraph = styled(Paragraph) `
+
+    margin: 0;
+    color: #0F508E;
+    font-size: 24px;
+    margin-left: 75px;      
+
+`
+
+export default {ActivityTitleParagraph , ActivityParagraph , TitleParagraph , FooterParagraph , FormParagraph , AboutPageTitleParagraph , AboutPageParagraph , WeatherFrcUnitParagraph};

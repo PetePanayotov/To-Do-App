@@ -40,7 +40,7 @@ const ForecastPage = () => {
 
     
     return(
-        <PageWrapper>
+        <PageWrapper withVideo={false}>
             <WeatherForecastConteiner>
 
 

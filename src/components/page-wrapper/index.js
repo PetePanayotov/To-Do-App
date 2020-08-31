@@ -2,9 +2,9 @@ import React , {useContext} from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../Context';
 import Header from '../header';
-import Main from '../main';
 import Footer from '../footer';
 import LinkContainer from '../link-container';
+import Video from '../video/JustDoIt.mp4';
 import linksObj from '../link';
 import containerObj from '../container';
 import buttonsObj from '../button';
@@ -13,7 +13,7 @@ import getNavigation from '../../utils/getNavigation';
 import handlers from '../../utils/page-wrapper-handler';
 
 const {HeaderLink , DropDownLink} = linksObj;
-const {DropDownWrapper , DropDownContent} = containerObj;
+const {Main , DropDownWrapper , DropDownContent} = containerObj;
 const {DropDownButton , LogoutButton} = buttonsObj;
 const {FooterParagraph} = paragraphsObj;
 const {handleMouseOver , handleMouseOut} = handlers;
@@ -70,7 +70,30 @@ const PageWrapper = (props) => {
                     }
                 </LinkContainer>
             </Header>
-            <Main hasVideo={props.withVideo}>
+            <Main direction={props.pageDirection}>
+
+                { props.withVideo &&
+
+                <div>
+                    <video autoPlay loop muted 
+                        style={{
+                            position: "absolute",
+                            width: "100%",
+                            left: "50%",
+                            top: "50%",
+                            height: "100%",
+                            objectFit: "cover",
+                            transform: "translate(-50% , -50%)",
+                            zIndex: "-1"
+                        }}
+                    >
+                    <source src={Video} type="video/mp4"/>
+                    </video>
+                    
+                </div>
+
+                }
+
                 {props.children}
             </Main>
             <Footer>
