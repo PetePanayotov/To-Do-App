@@ -14,8 +14,8 @@ const getNavigation = (isLoggedIn , username ,userId) => {
         },
 
         {
-            title: 'Plan',
-            href: '/plan'
+            title: 'Add',
+            href: '/add'
         },
         
         {
