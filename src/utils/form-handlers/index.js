@@ -208,6 +208,36 @@ export default {
 
         return handleSuccess(target , state , setState , 'buttonIsDisabled');
 
+    },
+
+    addActivity: async (event, history , state , userId) =>  {
+
+        event.preventDefault();
+    
+        const data = {...state , userId};
+       
+        const url = `http://localhost:9999/api/activity/add`
+        
+        const headerObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+    
+            
+        const promise = await fetch (url , headerObj);
+            
+        if(promise && promise.status === 200) {
+                
+            console.log('Success');
+            history.push('/')
+    
+        }else {
+            console.log('Fail');
+        };
+    
     }
 
 };

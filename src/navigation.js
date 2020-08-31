@@ -6,6 +6,7 @@ import LoginPage from './pages/login-page';
 import AboutPage from './pages/about-page';
 import SevenDayForecastPage from './pages/7-day-forecast';
 import SeventyTwoHourForecast from './pages/48-hour-forecast';
+import AddPage from './pages/add-page';
 
 
 class Navigation extends Component {
@@ -21,6 +22,7 @@ class Navigation extends Component {
                     <Route path="/about" component={AboutPage}/>
                     <Route path="/seven-day-forecast" component={SevenDayForecastPage}/>
                     <Route path="/72-hour-forecast" component={SeventyTwoHourForecast}/>
+                    <Route path="/add" component={AddPage}/>
                     
                 </Switch>
             </BrowserRouter>

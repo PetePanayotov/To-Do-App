@@ -1,8 +1,8 @@
 const userRouter = require('./user');
-const carRouter = require('./car');
+const activityRouter = require('./activity');
 
 module.exports = {
     userRouter,
-    carRouter
+    activityRouter
    
 };

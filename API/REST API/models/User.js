@@ -15,6 +15,15 @@ const UserSchema = new mongoose.Schema({
        
     },
 
+    activities: [
+        
+        {
+            type: 'ObjectId',
+            ref: 'Activity'
+        } 
+        
+    ]
+
 });
 
 module.exports = mongoose.model('User' , UserSchema);

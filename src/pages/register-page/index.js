@@ -9,7 +9,7 @@ import linksObj from '../../components/link';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
-import registerPageHandlers from '../../utils/login-register-page-handlers'
+import registerPageHandlers from '../../utils/form-handlers'
 
 
 const {FormLink} = linksObj;
