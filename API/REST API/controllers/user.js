@@ -169,13 +169,13 @@ const deleteUser = async (req , res , next) => {
  
 };
 
-const getUserWithCars = async (req , res , next) => {
+const getUserWithActivities = async (req , res , next) => {
 
-    const {id} = req.params;
-    
+    const {userId} = req.params;
+
     try {
 
-        const user = await User.findById(id).populate('likedCars').lean();
+        const user = await User.findById(userId).populate('activities').lean();
 
         if (!user) {
             throw new Error();
@@ -197,5 +197,5 @@ module.exports = {
     updatedUser,
     deleteUser,
     verifyUser,
-    getUserWithCars
+    getUserWithActivities
 }

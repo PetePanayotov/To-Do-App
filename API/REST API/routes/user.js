@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , deleteUser , getUserWithCars} = require('../controllers/user');
+const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , deleteUser , getUserWithActivities} = require('../controllers/user');
 
 
 // router.get('/', async (req , res , next) => {
@@ -9,15 +9,15 @@ const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , delet
 
 // });
 
-router.get('/:username', async (req , res , next) => {
+// router.get('/:username', async (req , res , next) => {
     
-    await getUser(req , res , next);
+//     await getUser(req , res , next);
 
-});
+// });
 
-router.get('/:id' , async (req , res , next) => {
+router.get('/:userId' , async (req , res , next) => {
     
-    await getUserWithCars(req , res , next);
+    await getUserWithActivities(req , res , next);
 
 });
 

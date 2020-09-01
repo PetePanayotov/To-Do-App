@@ -1,85 +1,78 @@
 import React , {useState , useEffect , useContext} from 'react';
-import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
+import ActivityUnit from '../../components/activity-unit';
 import containersObj from '../../components/container';
-import paragraphsObj from '../../components/paragraph';
-import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
-import handlers from '../../utils/form-handlers';
+import handlers from '../../utils/profile-page-handlers';
 
-const {ActivitContainer} = containersObj;
-const {ActivityTitleParagraph , ActivityParagraph} = paragraphsObj;
-const {FormLabel} = labelsObj;
-const {FinishButton} = buttonsObj;
-const {handleChange , addActivity} = handlers;
+const {PageBtnsContainer} = containersObj;
+const {PageButton} = buttonsObj;
+const {getActivities , changePage} = handlers;
+
 
 const ProfilePage = () => {
 
     const context = useContext(UserContext);
-    const {user:{username}} = context;
+    const {user:{username , userId}} = context;
+    const [state , setState] = useState([]);
+    const [pages , setPages] = useState([]);
+    const [startInd , setStartInd] = useState(0);
+    
 
     useEffect(() => {
+        
         document.title = username
-    } , []);
+        
+        getActivities(setState, setPages , userId);
+
+    } , [userId , username]);
+
+    const start = startInd * 3;
+    const end = start + 3;
+    const forRender = state.slice(start , end);
+
 
     return (
         <PageWrapper withVideo={false} pageDirection="column">
 
-            <ActivitContainer>
+            {
+                forRender.map((obj , i) => {
 
-                <ActivityTitleParagraph>
-                    Dentist Appointmnet
-                </ActivityTitleParagraph>
-                <ActivityParagraph>
-                    Location: Dupnitsa
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Date: 09/01/2020
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Time: 10:00
-                </ActivityParagraph>
+                    const {activity, location , date , time} = obj;
 
-                <FinishButton>
-                    Finish
-                </FinishButton>
+                    return (
 
-            </ActivitContainer>
+                        <ActivityUnit
+                            key={i}
+                            activity={activity}
+                            location={location}
+                            date={date}
+                            time={time}
+                        />
 
-            <ActivitContainer>
+                    )
 
-                <ActivityTitleParagraph>
-                    Dentist Appointmnet
-                </ActivityTitleParagraph>
-                <ActivityParagraph>
-                    Location: Dupnitsa
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Date: 09/01/2020
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Time: 10:00
-                </ActivityParagraph>
+                })
+            }
 
-            </ActivitContainer>
+            <PageBtnsContainer>
 
-            <ActivitContainer>
+                {
+                    pages.map((stringBtn , i) => {
+                        
+                        return (
+                        
+                            <PageButton isFirst={i === 0} onClick={(e) => changePage(e , setStartInd)} key={i}>
+                                {++i}
+                            </PageButton>
+                        )
 
-                <ActivityTitleParagraph>
-                    Dentist Appointmnet
-                </ActivityTitleParagraph>
-                <ActivityParagraph>
-                    Location: Dupnitsa
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Date: 09/01/2020
-                </ActivityParagraph>
-                <ActivityParagraph>
-                    Time: 10:00
-                </ActivityParagraph>
+                    })
+                }
 
-            </ActivitContainer>
+            </PageBtnsContainer>
+
 
 
         </PageWrapper>
