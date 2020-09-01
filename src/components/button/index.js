@@ -100,4 +100,21 @@ const FinishButton = styled(Button) `
 
 `;
 
-export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton , FinishButton};
+const PageButton = styled(Button) `
+
+    border: none;
+    background-color: #ffffff;
+    font-size: 18px;
+    color: ${props => props.isFirst ? '#C050F7' : '#0F508E'};
+    border-bottom: ${props => props.isFirst ? '1px solid #C050F7' : 'none'};
+    outline: none;
+
+    &:hover {
+        
+        cursor: pointer;
+        
+    }
+
+`;
+
+export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton , FinishButton , PageButton};

@@ -78,7 +78,7 @@ const ForeCstImageWrapper = styled(Container) `
    
 `;
 
-const ActivitContainer = styled(Container) `
+const ActivityContainer = styled(Container) `
 
     width: 70%;
     max-height: 25%;
@@ -89,4 +89,12 @@ const ActivitContainer = styled(Container) `
 
 `;
 
-export default {Main , DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivitContainer};
+const PageBtnsContainer = styled(Container) `
+
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 4%;
+`;
+
+export default {Main , DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer};
