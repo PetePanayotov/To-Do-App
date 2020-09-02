@@ -1,24 +1,32 @@
 const handleMouseOver = (event) => {
 
-    const button = event.target;
-    const parent = button.parentNode;
+    const li = event.currentTarget;
 
-    const [ , dropDownContent] = Array.from(parent.children);
+    const [arrowElem , dropDownContent] = Array.from(li.children);
 
     dropDownContent.style.display = 'block';
+    
+    arrowElem.className = "fas fa-chevron-up"
+
 
 };
 
 const handleMouseOut = (event) => {
     
-    const link = event.target;
-    const parent = link.parentNode;
+    const li = event.currentTarget;
 
-    parent.addEventListener('mouseleave' , () => {
-        parent.style.display = 'none'
-    });
+    const [arrowElem , dropDownContent] = Array.from(li.children);
+
+    arrowElem.className = "fas fa-chevron-down"
+    dropDownContent.style.display = 'none';
+};
+
+const logout = (context , history) => {
+
+    context.logout();
+    history.push('/')
 
 };
 
 
-export default {handleMouseOver , handleMouseOut};
+export default {handleMouseOver , handleMouseOut , logout};

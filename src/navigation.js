@@ -23,7 +23,7 @@ class Navigation extends Component {
                     <Route path="/seven-day-forecast" component={SevenDayForecastPage}/>
                     <Route path="/72-hour-forecast" component={SeventyTwoHourForecast}/>
                     <Route path="/add" component={AddPage}/>
-                    <Route path="/profile" component={ProfilePage}/>
+                    <Route path="/dashboard" component={ProfilePage}/>
                     
                 </Switch>
             </BrowserRouter>

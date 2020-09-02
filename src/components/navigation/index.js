@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const LinkContainer = styled.div `
-
+const Navigation = styled.ul `
+    list-style-type: none;
     display: flex;
     width: 50%;
     justify-content: space-evenly;
@@ -10,4 +10,4 @@ const LinkContainer = styled.div `
 `;
 
 
-export default LinkContainer;
+export default Navigation;

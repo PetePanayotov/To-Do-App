@@ -13,12 +13,6 @@ const Main = styled(Container) `
     justify-content: ${props => props.direction === 'column' ? 'space-evenly' : 'center'};
    
 
-`
-
-const DropDownWrapper = styled(Container) `
-
-    position: relative;
-    
 `;
 
 
@@ -97,4 +91,4 @@ const PageBtnsContainer = styled(Container) `
     min-width: 4%;
 `;
 
-export default {Main , DropDownWrapper , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer};
+export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer};

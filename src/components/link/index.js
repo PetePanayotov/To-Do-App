@@ -10,7 +10,7 @@ const HeaderLink = styled(Link) `
     text-decoration: none;
 
     &:hover{
-        padding-bottom: 3px;
+        padding-bottom: 5px;
         cursor: pointer;
         border-bottom: 2px solid #ffffff;
     }
@@ -33,6 +33,7 @@ const DropDownLink = styled(Link) `
 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    text-align: center;
     color: #0F508E;
     padding: 12px 16px;
     text-decoration: none;

@@ -24,36 +24,21 @@ const SubmitButton = styled(Button) `
 
 `;
 
-const DropDownButton = styled(Button) `
-
-    background-color: #0F508E;
-    color: white;
-    font-size: 24px;
-    border: none;
-    outline: none;
-
-    &:hover {
-        padding-bottom: 3px;
-        cursor: pointer;
-        
-    }
-`;
-
 const LogoutButton = styled(Button) `
     
-    background-color: #0F508E;
-    border: none;
-    color: #ffffff;
+    width: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    text-decoration: none;
+    font-size: 18px;
     outline: none;
+    border: none;
+    color: #0F508E;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 
-    &:hover {
-        padding-bottom: 3px;
+    &:hover{
         cursor: pointer;
-        border-bottom: 2px solid #ffffff;
-        
+        background-color: #dddddd;
     }
 
 `;
@@ -117,4 +102,4 @@ const PageButton = styled(Button) `
 
 `;
 
-export default {SubmitButton , DropDownButton , LogoutButton , ArrowButton , FinishButton , PageButton};
+export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton};

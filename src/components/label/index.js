@@ -26,4 +26,4 @@ const MaxTempLabel = styled(Label) `
 
 `;
 
-export default {FormLabel , MinTempLabel , MaxTempLabel};
+export default {Label , FormLabel , MinTempLabel , MaxTempLabel};
