@@ -61,7 +61,7 @@ const AddPage = () => {
                     <FormLabel>Date</FormLabel>
                     <InputField
                         value={date} 
-                        placeholder='07/17/2020'
+                        placeholder='17/07/2020'
                         onChange={e => handleChange(e , state , setState , 'date')}
                     />
                 </InputContainer>
