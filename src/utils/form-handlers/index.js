@@ -115,7 +115,7 @@ export default {
         
         const target = event.target;
         const username = target.value;
-        const url = `http://localhost:9999/api/user/${username}`;
+        const url = `http://localhost:9999/api/user/validate/${username}`;
 
         if (username.length < 5) {
             return handleError(target , 'Minimal length - 5 symbols');
@@ -137,10 +137,10 @@ export default {
 
         const target = event.target;
         const username = target.value;
-        const url = `http://localhost:9999/api/user/${username}`;
+        const url = `http://localhost:9999/api/user/validate/${username}`;
 
         const promise = await fetch(url);
-
+        
         if(promise.status !== 200) {
 
             return handleError(target , 'Invalid Username')

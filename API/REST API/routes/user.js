@@ -9,11 +9,11 @@ const {getUser , registerUser , verifyUser , verifyPassword ,updatedUser , delet
 
 // });
 
-// router.get('/:username', async (req , res , next) => {
+router.get('/validate/:username', async (req , res , next) => {
     
-//     await getUser(req , res , next);
+    await getUser(req , res , next);
 
-// });
+});
 
 router.get('/:userId' , async (req , res , next) => {
     

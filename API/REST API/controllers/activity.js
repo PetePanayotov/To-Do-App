@@ -189,25 +189,25 @@ const addActivity = async (req , res) => {
 // };
 
 
-// const deleteCar = async (req , res , next) => {
+const deleteActivity = async (req , res , next) => {
 
-//     const {id} = req.params;
+    const {id} = req.params;
 
-//     try {
+    try {
         
-//         const removedCar = await Car.deleteOne({_id: id});
+        const removedCar = await Activity.deleteOne({_id: id});
 
-//         if (!removedCar) {
-//             throw new Error();
+        if (!removedCar) {
+            throw new Error();
 
-//         };
+        };
 
-//         res.send(removedCar);
+        res.send(removedCar);
         
-//     } catch (error) {
-//         next()
-//     }
-
+    } catch (error) {
+        res.status(401)
+    }
+};
 
 
 
@@ -270,7 +270,8 @@ const addActivity = async (req , res) => {
 // };
 
 module.exports = {
-    addActivity
+    addActivity,
+    deleteActivity
 }
 
 

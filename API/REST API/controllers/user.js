@@ -12,8 +12,7 @@ const generateToken = async data => {
 const getUser = async (req , res , next) => {
 
     const {username} = req.params;
-
-
+ 
     const [user] = await User.find({username});
    
     if (user) {
@@ -172,7 +171,7 @@ const deleteUser = async (req , res , next) => {
 const getUserWithActivities = async (req , res , next) => {
 
     const {userId} = req.params;
-
+ 
     try {
 
         const user = await User.findById(userId).populate('activities').lean();
