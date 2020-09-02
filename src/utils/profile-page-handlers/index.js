@@ -1,3 +1,28 @@
+const sortActivities = (a , b) => {
+
+    const [fD , fM , fY] = a.date.split('/');
+    const [fH , fMin] = a.time.split(':');
+    
+    const [sD , sM , sY] = b.date.split('/');
+    const [sH , sMin] = b.time.split(':');
+
+    const firstDate = new Date (`${fM}/${fD}/${fY}`);
+    const secondtDate = new Date (`${sM}/${sD}/${sY}`);
+
+    if ((firstDate - secondtDate) !== 0) {
+
+        return firstDate - secondtDate;
+    };
+
+    if (fH !== sH) {
+
+        return Number(fH) - Number(sH);
+    };
+
+    return Number(fMin) - Number(sMin);
+
+};
+
 export default {
 
     getActivities: async (setState, setPages , userId) => {
@@ -8,7 +33,9 @@ export default {
     
         const response = await promise.json();
     
-        const {activities} = response;
+        let {activities} = response;
+
+        activities.sort(sortActivities);
 
         const numOfPages = Math.ceil(activities.length / 3);
         let pagesArr = new Array(numOfPages);
