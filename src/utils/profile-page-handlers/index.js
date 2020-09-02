@@ -41,4 +41,20 @@ export default {
     
     },
 
+    finishActivity: async (e , state , setState , id) => {
+
+        const url = `http://localhost:9999/api/activity/${id}`;
+        const actInd = state.findIndex(a => a._id === id);
+    
+    
+        const newState = [...state.slice(0 , actInd) , ...state.slice(actInd + 1)];
+    
+        const promise = await fetch(url , {method: 'DELETE'});
+    
+        if(promise.status === 200) {
+            setState(newState);
+        };
+    
+    }
+
 };

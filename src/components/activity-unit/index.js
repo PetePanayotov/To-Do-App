@@ -8,7 +8,7 @@ const {ActivityTitleParagraph , ActivityParagraph} = paragraphsObj;
 const {FinishButton} = buttonsObj;
 
 
-const ActivityUnit = ({activity , location , date , time}) => {
+const ActivityUnit = ({handler , activity , location , date , time}) => {
 
     return (
 
@@ -30,7 +30,7 @@ const ActivityUnit = ({activity , location , date , time}) => {
                 Time: {time}
             </ActivityParagraph>
 
-            <FinishButton>
+            <FinishButton onClick={handler}>
                 Finish
             </FinishButton>
 
@@ -39,5 +39,6 @@ const ActivityUnit = ({activity , location , date , time}) => {
     );
 
 };
+
 
 export default ActivityUnit;

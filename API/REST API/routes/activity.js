@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const {addActivity , getAllCars , getCar , createCar , updateCar , deleteCar , likeCar , dislikeCar , commentCar , removeComment} = require('../controllers/activity');
+const {addActivity , getAllCars , getCar , createCar , updateCar , deleteActivity , likeCar , dislikeCar , commentCar , removeComment} = require('../controllers/activity');
 
 
 router.post('/add' , (req , res , next) => {
 
     addActivity(req , res , next);
+
+});
+
+router.delete('/:id', (req , res , next) => {
+    
+    deleteActivity(req , res , next);
 
 });
 
@@ -58,7 +64,7 @@ router.post('/add' , (req , res , next) => {
 
 // router.delete('/:id', async (req , res , next) => {
     
-//     await deleteCar(req , res , next);
+//     await deleteActivity(req , res , next);
 
 // });
 

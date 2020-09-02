@@ -8,7 +8,7 @@ import handlers from '../../utils/profile-page-handlers';
 
 const {PageBtnsContainer} = containersObj;
 const {PageButton} = buttonsObj;
-const {getActivities , changePage} = handlers;
+const {getActivities , changePage , finishActivity} = handlers;
 
 
 const ProfilePage = () => {
@@ -39,12 +39,14 @@ const ProfilePage = () => {
             {
                 forRender.map((obj , i) => {
 
-                    const {activity, location , date , time} = obj;
+                    const {_id , activity, location , date , time} = obj;
 
                     return (
 
                         <ActivityUnit
+                            handler={(e) => finishActivity(e , state , setState , _id)}
                             key={i}
+                            id={_id}
                             activity={activity}
                             location={location}
                             date={date}
