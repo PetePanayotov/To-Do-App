@@ -8,7 +8,8 @@ import AboutPage from './pages/about-page';
 import SevenDayForecastPage from './pages/7-day-forecast';
 import SeventyTwoHourForecast from './pages/48-hour-forecast';
 import AddPage from './pages/add-page';
-import ProfilePage from './pages/profile-page';
+import ActivitiesPage from './pages/activities-page';
+import SettingsPage from './pages/settings-page';
 
 const Navigation = () => {
 
@@ -26,7 +27,8 @@ const Navigation = () => {
                 <Route path="/seven-day-forecast" component={isLoggedIn ? SevenDayForecastPage : HomePage}/>
                 <Route path="/72-hour-forecast" component={isLoggedIn ? SeventyTwoHourForecast : HomePage}/>
                 <Route path="/add" component={isLoggedIn ? AddPage : HomePage}/>
-                <Route path="/dashboard" component={isLoggedIn ? ProfilePage : HomePage}/>
+                <Route path="/activities" component={isLoggedIn ? ActivitiesPage : HomePage}/>
+                <Route path="/settings" component={isLoggedIn ? SettingsPage : HomePage}/>
                 
             </Switch>
         </BrowserRouter>

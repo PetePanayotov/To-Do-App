@@ -27,7 +27,6 @@ const PageWrapper = (props) => {
     const history = useHistory()
     const linksArray = getNavigation(isLoggedIn);
     
-    const dashboardHref = `/dashboard?id=${userId}`
 
     return (
         <div>
@@ -47,11 +46,11 @@ const PageWrapper = (props) => {
                                 </DropDownLink>
 
                                 <DropDownLink to="/72-hour-forecast">
-                                    72-Hour
+                                    <i className="fas fa-clock"></i>&nbsp;&nbsp;&nbsp;72-Hour
                                 </DropDownLink>
 
                                 <DropDownLink to="/seven-day-forecast">
-                                    7-Day
+                                    <i className="fas fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;7-Day
                                 </DropDownLink>
 
                             </DropDownContent>
@@ -68,11 +67,11 @@ const PageWrapper = (props) => {
 
                             <DropDownContent>
                                 
-                                <DropDownLink to={dashboardHref}>
+                                <DropDownLink to={`/activities?id=${userId}`}>
                                     <i className="fas fa-snowboarding"></i>&nbsp;&nbsp;&nbsp;My Activities
                                 </DropDownLink>
 
-                                <DropDownLink to="/settings">
+                                <DropDownLink to={`/settings?id=${userId}`}>
                                     <i className="fas fa-user-cog"></i>&nbsp;&nbsp;&nbsp;Settings
                                 </DropDownLink>
 

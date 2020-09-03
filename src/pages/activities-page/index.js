@@ -11,7 +11,7 @@ const {PageButton} = buttonsObj;
 const {getActivities , changePage , finishActivity} = handlers;
 
 
-const ProfilePage = () => {
+const ActivitiesPage = () => {
 
     const context = useContext(UserContext);
     const {user:{username , userId}} = context;
@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         
-        document.title = username
+        document.title = `My Activities`
         
         getActivities(setState, setPages , userId);
 
@@ -83,4 +83,4 @@ const ProfilePage = () => {
 };
 
 
-export default ProfilePage;
+export default ActivitiesPage;
