@@ -11,7 +11,7 @@ const SubmitButton = styled(Button) `
     align-self: center;
     font-size: 20px;
     font-weight: 400;
-    color: #0F508E;
+    color: #3A5A9C;
     background-color: #ffffff;
     border: 1px solid #BEBECE;
     border-radius: 5px;
@@ -19,7 +19,7 @@ const SubmitButton = styled(Button) `
     &:hover {
         cursor: pointer;
         color: #ffffff;
-        background-color: #0379FF;
+        background-color: #3A5A9C;
     }
 
 `;
@@ -31,14 +31,15 @@ const LogoutButton = styled(Button) `
     font-size: 18px;
     outline: none;
     border: none;
-    color: #0F508E;
+    color: #3A5A9C;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 
     &:hover{
         cursor: pointer;
-        background-color: #dddddd;
+        color: #ffffff;
+        background-color: #3A5A9C;
     }
 
 `;

@@ -32,15 +32,16 @@ const FormLink = styled(Link) `
 const DropDownLink = styled(Link) `
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
-    color: #0F508E;
+    color: #3A5A9C;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 
     &:hover{
-        background-color: #dddddd;
+        color: #ffffff;
+        background-color: #3A5A9C;
     }
 
 `;

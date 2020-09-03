@@ -38,7 +38,7 @@ const App = (props) => {
     useEffect(() => {
 
         verifyUser(login , logout);
-        console.log('i was rendered')
+ 
     } , []);
 
     

@@ -25,9 +25,9 @@ export default async (login , logout) => {
         },
         body: JSON.stringify(data)
     };
-    console.log('kvo stana ve')
+
     const promise = await fetch(url , headersObj);
-    console.log('this is the status' , promise.status)
+
     if (promise.status === 200) {
         
         const user = await promise.json();
