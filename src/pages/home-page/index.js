@@ -5,7 +5,7 @@ import paragraphsObj from '../../components/paragraph';
 const {TitleParagraph} = paragraphsObj;
 
 
-const GuestHomePage = () => {
+const HomePage = () => {
 
     useEffect(() => {
         document.title = 'Home';
@@ -22,4 +22,4 @@ const GuestHomePage = () => {
 
 };
 
-export default GuestHomePage;
+export default HomePage;

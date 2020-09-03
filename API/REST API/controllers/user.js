@@ -89,15 +89,19 @@ const verifyPassword = async (req , res , next) => {
 
 };
 
-const verifyUser = async (req , res , next) => {
+const verifyUser = async (req , res) => {
 
     const {token} = req.body;
-
-    const decodeObj = jwt.verify(token , privateKey);
     
-    const {username , userId} = decodeObj;
-
     try {
+        
+        const decodeObj = jwt.verify(token , privateKey);
+        
+        if(!decodeObj) {
+            throw new Error();
+        };
+        
+        const {username , userId} = decodeObj;
 
         const user = await User.findOne({_id:userId});
 
@@ -113,7 +117,9 @@ const verifyUser = async (req , res , next) => {
         res.send(userInfo);
     }
     catch {
-        next();
+        
+        res.status(401).send({});
+       
     };
 
 };

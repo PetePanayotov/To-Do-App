@@ -1,36 +1,33 @@
-import React , {Component} from 'react';
+import React , {useState, useEffect} from 'react';
 import UserContext from './Context';
+import verifyUser from './utils/App-handlers';
 
-function getCookie(name) {
-    let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return v ? v[2] : null;
-};
 
-class App extends Component {
+const App = (props) => {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isLoggedIn: null,
-            user: {},
-
-        }
+    const initialState = {
+        
+        isLoggedIn: null, 
+        user: {}
+        
     };
 
-    login = (user) => {
+    const [state , setState] = useState(initialState)
+
+    const login = (user) => {
         
-        this.setState({
+        setState({
             isLoggedIn: true,
             user,
  
         });
     };
 
-    logout = () => {
-        document.cookie = "oreo= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+    const logout = () => {
         
-        this.setState({
+        document.cookie = "oreo= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
+        setState({
             isLoggedIn: false,
             user: {},
 
@@ -38,72 +35,39 @@ class App extends Component {
 
     };
 
-    componentDidMount() {
+    useEffect(() => {
 
-        (async () => {
+        verifyUser(login , logout);
+        console.log('i was rendered')
+    } , []);
 
-            const cookieValue = getCookie('oreo');
-
-            if (!cookieValue) {
-                return this.logout()
-                
-            };
-            
-            const url = 'http://localhost:9999/api/user/verify';
-            
-            const data = {token: cookieValue};
-      
-            const headersObj = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
     
-            const promise = await fetch(url , headersObj);
+    const {isLoggedIn , user} = state;
 
-            if (promise.status === 200) {
-                
-                const user = await promise.json();
-                return this.login(user);
-            };
+    if (isLoggedIn === null) {
 
-            return this.logout();
-    
-        })();
-
+        return(<div>Loading...</div>);
 
     };
 
-    render() {
+    return(
 
-        const {isLoggedIn , user} = this.state;
+        <UserContext.Provider 
+            value = {{
+                isLoggedIn,
+                user,
+                login,
+                logout
 
-        if (isLoggedIn === null) {
-            return(<div>Loading...</div>);
-        }
+            }}
+        >
+            
+            {props.children}
 
-        return(
-            <UserContext.Provider 
-                value = {{
-                    isLoggedIn,
-                    user,
-                    login: this.login,
-                    logout: this.logout
+        </UserContext.Provider>
     
-                }}
-            >
-                
-                {this.props.children}
-
-            </UserContext.Provider>
-        
-        )
-    }
-
+    );
+    
 };
 
 export default App;
-
-

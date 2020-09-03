@@ -1,6 +1,7 @@
-import React , {Component} from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Switch , Route } from 'react-router-dom';
-import GuestHomePage from './pages/guest-home-page';
+import UserContext from './Context';
+import HomePage from './pages/home-page';
 import RegisterPage from './pages/register-page';
 import LoginPage from './pages/login-page';
 import AboutPage from './pages/about-page';
@@ -9,26 +10,27 @@ import SeventyTwoHourForecast from './pages/48-hour-forecast';
 import AddPage from './pages/add-page';
 import ProfilePage from './pages/profile-page';
 
-class Navigation extends Component {
+const Navigation = () => {
 
-    render () {
-        
-        return(
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={GuestHomePage}/>
-                    <Route path="/register" component={RegisterPage}/>
-                    <Route path="/login" component={LoginPage}/>
-                    <Route path="/about" component={AboutPage}/>
-                    <Route path="/seven-day-forecast" component={SevenDayForecastPage}/>
-                    <Route path="/72-hour-forecast" component={SeventyTwoHourForecast}/>
-                    <Route path="/add" component={AddPage}/>
-                    <Route path="/dashboard" component={ProfilePage}/>
-                    
-                </Switch>
-            </BrowserRouter>
-        )
-    }
+    const context = useContext(UserContext);
+    const {isLoggedIn} = context;
+
+    return(
+
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={HomePage}/>
+                <Route path="/register" component={isLoggedIn ? HomePage : RegisterPage}/>
+                <Route path="/login" component={isLoggedIn ? HomePage : LoginPage}/>
+                <Route path="/about" component={AboutPage}/>
+                <Route path="/seven-day-forecast" component={isLoggedIn ? SevenDayForecastPage : HomePage}/>
+                <Route path="/72-hour-forecast" component={isLoggedIn ? SeventyTwoHourForecast : HomePage}/>
+                <Route path="/add" component={isLoggedIn ? AddPage : HomePage}/>
+                <Route path="/dashboard" component={isLoggedIn ? ProfilePage : HomePage}/>
+                
+            </Switch>
+        </BrowserRouter>
+    );
 
 };
 

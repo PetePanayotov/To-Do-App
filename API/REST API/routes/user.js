@@ -33,9 +33,9 @@ router.post('/verifyPassword', async (req , res , next) => {
 
 });
 
-router.post('/verify' , async (req , res , next) => {
+router.post('/verify' , async (req , res) => {
 
-    await verifyUser(req , res , next);
+    await verifyUser(req , res);
 
 });
 
