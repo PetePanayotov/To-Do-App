@@ -7,7 +7,8 @@ const Container = styled.div `
 const Main = styled(Container) `
 
     width: 100%;
-    height: 82vh;
+    height: 100%;
+    min-height: 82vh;
     display: flex;
     flex-direction: ${props => props.direction === 'column' ? 'column' : 'row'};
     justify-content: ${props => props.direction === 'column' ? 'space-evenly' : 'center'};
@@ -44,7 +45,7 @@ const AboutPageContainer = styled(Container) `
 const WeatherForecastConteiner = styled(Container) `
 
     width: 95%;
-    height: 90%;
+    height: 70vh;
     align-self: center;
     display: flex;
     justify-content: space-evenly;
@@ -91,4 +92,42 @@ const PageBtnsContainer = styled(Container) `
     min-width: 4%;
 `;
 
-export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer};
+const InputContainer = styled.div `
+
+    width: 50%;
+    margin: 0 auto;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+`;
+
+const UpdateContainer = styled(Container) `
+
+    width: 60%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #0F508E;
+    border-radius: 10px;
+    padding: 10px 0;
+    align-self: center;
+    background-color: #EFEFEF;
+`;
+
+const UpdateWrapper = styled(Container) `
+
+    align-self: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;
+    align-items: center;
+    
+
+`;
+
+export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer , InputContainer , UpdateContainer , UpdateWrapper};

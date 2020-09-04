@@ -2,9 +2,9 @@ import React, { useState , useContext , useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
-import InputContainer from '../../components/form-input-div';
-import InputField from '../../components/form-input-field';
 import Form from '../../components/form';
+import containersObj from '../../components/container';
+import inputsObj from '../../components/input';
 import linksObj from '../../components/link';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
@@ -12,6 +12,8 @@ import paragraphsObj from '../../components/paragraph';
 import registerPageHandlers from '../../utils/form-handlers'
 
 
+const {InputContainer} = containersObj;
+const {FormInput} = inputsObj;
 const {FormLink} = linksObj;
 const {FormLabel} = labelsObj;
 const {SubmitButton} = buttonsObj
@@ -50,7 +52,7 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Username</FormLabel>
-                    <InputField value={username} 
+                    <FormInput value={username} 
                         onChange={e => handleChange(e , state , setState , 'username')}
                         onBlur={e => handleUserNameBlur(e , state , setState)}
                     />
@@ -58,18 +60,18 @@ const RegisterPage = () => {
 
                 <InputContainer>
                     <FormLabel>Password</FormLabel>
-                        <InputField 
-                            type="password" 
-                            value={password}
-                            disabled={passwordIsDisabled}
-                            onChange={e => handleChange(e , state , setState , 'password')}
-                            onBlur={e => handlePasswordBlur(e , state , setState)}
-                        />
+                    <FormInput 
+                        type="password" 
+                        value={password}
+                        disabled={passwordIsDisabled}
+                        onChange={e => handleChange(e , state , setState , 'password')}
+                        onBlur={e => handlePasswordBlur(e , state , setState)}
+                    />
                 </InputContainer>
 
                 <InputContainer>
                     <FormLabel>Repeat Password</FormLabel>
-                    <InputField 
+                    <FormInput 
                         type="password" 
                         value={rePassword}
                         disabled={rePasswordIsDisabled} 

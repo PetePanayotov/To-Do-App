@@ -32,31 +32,6 @@ const PageWrapper = (props) => {
         <div>
             <Header>
                 <Navigation>
-                    {
-                        context.isLoggedIn &&
-
-                        <LinkWrapper onMouseOver={e => handleMouseOver(e)} onMouseOut={e => handleMouseOut(e)}>
-
-                            Weather <i className="fas fa-chevron-down"></i>
-
-                            <DropDownContent>
-
-                                <DropDownLink to="/current-forecast">
-                                    Today
-                                </DropDownLink>
-
-                                <DropDownLink to="/72-hour-forecast">
-                                    <i className="fas fa-clock"></i>&nbsp;&nbsp;&nbsp;72-Hour
-                                </DropDownLink>
-
-                                <DropDownLink to="/seven-day-forecast">
-                                    <i className="fas fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;7-Day
-                                </DropDownLink>
-
-                            </DropDownContent>
-
-                        </LinkWrapper>
-                    }
 
                     {
                         context.isLoggedIn &&
@@ -78,6 +53,32 @@ const PageWrapper = (props) => {
                                 <LogoutButton onClick={() => logout(context , history)}>
                                     <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;Logout
                                 </LogoutButton>
+
+                            </DropDownContent>
+
+                        </LinkWrapper>
+                    }
+
+                    {
+                        context.isLoggedIn &&
+
+                        <LinkWrapper onMouseOver={e => handleMouseOver(e)} onMouseOut={e => handleMouseOut(e)}>
+
+                            Weather <i className="fas fa-chevron-down"></i>
+
+                            <DropDownContent>
+
+                                <DropDownLink to="/current-forecast">
+                                    Today
+                                </DropDownLink>
+
+                                <DropDownLink to="/72-hour-forecast">
+                                    <i className="fas fa-clock"></i>&nbsp;&nbsp;&nbsp;72-Hour
+                                </DropDownLink>
+
+                                <DropDownLink to="/seven-day-forecast">
+                                    <i className="fas fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;7-Day
+                                </DropDownLink>
 
                             </DropDownContent>
 

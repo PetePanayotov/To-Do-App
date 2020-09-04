@@ -7,12 +7,6 @@ const LinkWrapper = styled.li `
     font-size: 24px;
     text-decoration: none;
 
-    /* &:hover{
-        padding-bottom: 5px;
-        cursor: pointer;
-        border-bottom: 1px solid #ffffff;
-    } */
-
 `;
 
 export default LinkWrapper;

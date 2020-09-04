@@ -103,4 +103,24 @@ const PageButton = styled(Button) `
 
 `;
 
-export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton};
+const UpdateButton = styled(Button) `
+
+    width: 15%;
+    height: 4vh;
+    align-self: center;
+    font-size: 18px;
+    color: #0F508E;
+    background-color: #ffffff;
+    border: 2px solid #0F508E;
+    border-radius: 10px;
+
+    &:hover {
+        
+        cursor: pointer;
+        color: #ffffff;
+        background-color: #0F508E;
+        
+    }
+`;
+
+export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton};
