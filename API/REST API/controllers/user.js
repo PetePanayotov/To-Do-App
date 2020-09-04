@@ -128,12 +128,20 @@ const verifyUser = async (req , res) => {
 const updatedUser = async (req , res , next) => {
 
     const {userId} = req.params;
+    const {body} = req;
+ 
+    const newData = body.username ? {username: body.username} : {password: body.password};
 
-    const { username } = req.body;
-    console.log(username)
+    if (body.password) {
+
+        const salt =  await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newData.password , salt);
+        newData.password = hashedPassword;
+    };
+
     try {
         
-        const updatedUser = await User.update({_id : userId} , {username});
+        const updatedUser = await User.update({_id : userId} , newData);
 
         if (!updatedUser) {
             throw new Error();

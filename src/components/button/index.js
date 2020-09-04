@@ -113,6 +113,7 @@ const UpdateButton = styled(Button) `
     background-color: #ffffff;
     border: 2px solid #0F508E;
     border-radius: 10px;
+    outline: none;
 
     &:hover {
         
