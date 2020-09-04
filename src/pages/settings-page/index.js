@@ -17,11 +17,15 @@ const {FormLink} = linksObj;
 const {Label} = labelsObj;
 const {SubmitButton , UpdateButton} = buttonsObj
 const {FormParagraph} = paragraphsObj;
-const {handleChange , handleInputBlur , handleUsernameUpdate} = settingsPageHandlers;
+const {handleChange , handleInputBlur , updateUsername , handlePasswordBlur , handleRePasswordBlur , updatePassword} = settingsPageHandlers;
 
 const initialState = {
     username: '',
-    updateUnBtnDisabled: true
+    usernameIsCorrect: null,
+    password: '',
+    passwordIsCorrect: null,
+    rePassword: '',
+    rePasswordIsCorrect: null,
 };
 
 const SettingsPage = () => {
@@ -35,7 +39,7 @@ const SettingsPage = () => {
     const history = useHistory();
     const [state , setState] = useState(initialState);
 
-    const {username , password , updateUnBtnDisabled} = state;
+    const {username , password , rePassword ,updateUnBtnDisabled} = state;
     
     return (
         
@@ -54,43 +58,41 @@ const SettingsPage = () => {
 
                 <UpdateButton 
                     type="submit"
-                    disabled={updateUnBtnDisabled}
-                    onClick={e => handleUsernameUpdate(e , state ,userId)}
+                    onClick={e => updateUsername(e , history ,state ,userId)}
                 >
                         Chanage
                 </UpdateButton>
 
             </UpdateContainer>
 
-            {/* <UpdateContainer>
+            <UpdateContainer>
 
                 <UpdateWrapper>
                     <Label>New Password</Label>
-                    <UpdateInput 
-                        value={username} 
-                        onChange={e => handleChange(e , state , setState , 'username')}
-                        onBlur = {e => handleUserNameBlur(e , state , setState)}
+                    <UpdateInput
+                        type="password"
+                        value={password} 
+                        onChange={e => handleChange(e , state , setState , 'password')}
+                        onBlur = {e => handlePasswordBlur(e , state , setState)}
                     />
 
                     <Label>Confirm New Password</Label>
-                    <UpdateInput 
-                        value={username} 
-                        onChange={e => handleChange(e , state , setState , 'username')}
-                        onBlur = {e => handleUserNameBlur(e , state , setState)}
+                    <UpdateInput
+                        type="password" 
+                        value={rePassword} 
+                        onChange={e => handleChange(e , state , setState , 'rePassword')}
+                        onBlur = {e => handleRePasswordBlur(e , state , setState)}
                     />
                 </UpdateWrapper>
 
                 <UpdateButton 
                     type="submit"
-                    onClick={e => {
-                        e.preventDefault()
-                        console.log(state)
-                    }}
+                    onClick={e => updatePassword(e , history ,state , userId)}
                 >
                         Chanage
                 </UpdateButton>
 
-            </UpdateContainer> */}
+            </UpdateContainer>
 
 
         </PageWrapper>
