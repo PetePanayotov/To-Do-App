@@ -101,7 +101,7 @@ const verifyUser = async (req , res) => {
             throw new Error();
         };
         
-        const {username , userId} = decodeObj;
+        const {userId} = decodeObj;
 
         const user = await User.findOne({_id:userId});
 
@@ -110,7 +110,7 @@ const verifyUser = async (req , res) => {
         };
 
         const userInfo = {
-            username,
+            username: user.username,
             userId
         };
 
@@ -127,20 +127,13 @@ const verifyUser = async (req , res) => {
 
 const updatedUser = async (req , res , next) => {
 
-    const {id} = req.params;
-    const { username, password } = req.body;
+    const {userId} = req.params;
 
-    const salt =  await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password , salt);
-
-    const newData = {
-        username,
-        password: hashedPassword
-    }
-
+    const { username } = req.body;
+    console.log(username)
     try {
         
-        const updatedUser = await User.update({_id : id} , newData);
+        const updatedUser = await User.update({_id : userId} , {username});
 
         if (!updatedUser) {
             throw new Error();
@@ -149,7 +142,7 @@ const updatedUser = async (req , res , next) => {
         res.send(updatedUser);
         
     } catch (error) {
-        next()
+        res.status(401.).send({})
     };
 
 };

@@ -39,7 +39,7 @@ router.post('/verify' , async (req , res) => {
 
 });
 
-router.put('/:id', async (req , res , next) => {
+router.put('/update/:userId', async (req , res , next) => {
 
     await updatedUser(req , res , next);
 

@@ -3,12 +3,15 @@ import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import Form from '../../components/form';
-import InputContainer from '../../components/form-input-div';
-import InputField from '../../components/form-input-field';
+import containersObj from '../../components/container';
+import inputsObj from '../../components/input';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
 import handlers from '../../utils/form-handlers';
 
+
+const {InputContainer} = containersObj;
+const {FormInput} = inputsObj;
 const {FormLabel} = labelsObj;
 const {SubmitButton} = buttonsObj;
 const {handleChange , addActivity} = handlers;
@@ -40,7 +43,7 @@ const AddPage = () => {
 
                 <InputContainer>
                     <FormLabel>Activity</FormLabel>
-                    <InputField
+                    <FormInput
                         value={activity} 
                         placeholder='What do you feel like doing?' 
                         onChange={e => handleChange(e , state , setState , 'activity')}
@@ -50,7 +53,7 @@ const AddPage = () => {
 
                 <InputContainer>
                     <FormLabel>Location</FormLabel>
-                    <InputField 
+                    <FormInput 
                         value={location} 
                         placeholder='When are you going to do it?'
                         onChange={e => handleChange(e , state , setState , 'location')}
@@ -59,7 +62,7 @@ const AddPage = () => {
 
                 <InputContainer>
                     <FormLabel>Date</FormLabel>
-                    <InputField
+                    <FormInput
                         value={date} 
                         placeholder='17/07/2020'
                         onChange={e => handleChange(e , state , setState , 'date')}
@@ -68,7 +71,7 @@ const AddPage = () => {
 
                 <InputContainer>
                     <FormLabel>Time</FormLabel>
-                    <InputField 
+                    <FormInput 
                         value={time} 
                         placeholder='17:17'
                         onChange={e => handleChange(e , state , setState , 'time')}

@@ -2,15 +2,17 @@ import React, { useState , useContext , useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
-import InputContainer from '../../components/form-input-div';
-import InputField from '../../components/form-input-field';
 import Form from '../../components/form';
+import containersObj from '../../components/container';
+import inputsObj from '../../components/input';
 import labelsObj from '../../components/label';
 import linksObj from '../../components/link';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import loginPageHandlers from '../../utils/form-handlers';
 
+const {InputContainer} = containersObj;
+const {FormInput} = inputsObj;
 const {FormLink} = linksObj;
 const {FormLabel} = labelsObj;
 const {SubmitButton} = buttonsObj;
@@ -44,7 +46,7 @@ const LoginPage = () => {
 
                 <InputContainer>
                     <FormLabel>Username</FormLabel>
-                    <InputField 
+                    <FormInput 
                         value={username} 
                         onChange={e => handleChange(e , state , setState , 'username')}
                         onBlur={e => handleLoginUsernameBlur(e , state , setState)}
@@ -53,7 +55,7 @@ const LoginPage = () => {
 
                 <InputContainer>
                     <FormLabel>Password</FormLabel>
-                    <InputField 
+                    <FormInput 
                         type="password" value={password}
                         disabled={passwordIsDisabled}
                         onChange={e => handleChange(e , state , setState , 'password')}

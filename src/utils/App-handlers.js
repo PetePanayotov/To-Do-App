@@ -31,6 +31,7 @@ export default async (login , logout) => {
     if (promise.status === 200) {
         
         const user = await promise.json();
+        console.log(user)
         return login(user);
     };
 
