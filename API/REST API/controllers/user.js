@@ -12,7 +12,7 @@ const generateToken = async data => {
 const getUser = async (req , res , next) => {
 
     const {username} = req.params;
- 
+
     const [user] = await User.find({username});
    
     if (user) {
@@ -64,6 +64,10 @@ const verifyPassword = async (req , res , next) => {
         
         const user = await User.findOne({username});
 
+        if(!user) {
+            throw new Error();
+        }
+
         const passwordsMatch = await bcrypt.compare(password , user.password);
     
         if (passwordsMatch) {
@@ -79,12 +83,11 @@ const verifyPassword = async (req , res , next) => {
             res.header('Authorization' , token).send(user);
 
         }else{
-            res.status(401).send({});
-            return;
+            return res.status(401).send({});
         }
         
     } catch (error) {
-        next();
+        return res.status(401).send({});
     };
 
 };

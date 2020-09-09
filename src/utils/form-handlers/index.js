@@ -1,19 +1,27 @@
-const handleError = (target , errorText) => {
-
-    target.value = ''
-    target.style.backgroundColor = '#FF4040'
-    target.placeholder = errorText;
-};
-
-const handleSuccess = (target , state , setState , property) => {
+const handleError = (target , errorText , state , setState , firstProp , secondProp) => {
 
     const newState = {
-        [property]: false
-    };
+        [firstProp]: '',
+        [secondProp]: false
+    }
 
-    setState({...state , ...newState});
+    target.style.backgroundColor = '#FF4040'
+    target.placeholder = errorText;
+    
+    return setState({...state , ...newState});
+};
+
+const handleSuccess = (target , state , setState , firstProp , value , secondProp) => {
+
     target.style.backgroundColor = '#A2FFA2';
     target.placeholder = '';
+        
+    const newState = {
+        [firstProp]: value,
+        [secondProp]: true
+    };
+        
+    return setState({...state , ...newState});
 
 };
 
@@ -33,42 +41,47 @@ export default {
     register : async (event, context , history , state) => {
 
         event.preventDefault();
-        
-        const data = {};
-        Object.assign(data , state);
-        
-        const headerObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
 
-        const url = 'http://localhost:9999/api/user/register';
+        const {usernameIsCorrect , passwordIsCorrect , rePasswordIsCorrect} = state;
 
-        try {
-
-            const promise = await fetch(url , headerObj);
-            const response = await promise.json();
+        if (usernameIsCorrect && passwordIsCorrect && rePasswordIsCorrect) {
+          
+            const data = {};
+            Object.assign(data , state);
             
-            if (!response) {
-                throw new Error();
+            const headerObj = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             };
-
-            const token = promise.headers.get('Authorization');
- 
-            document.cookie = `oreo=${token}`;
-
-            context.login({
-                username: response.username,
-                userId: response._id
-            });
-
-            history.push('/')
-
-        } catch (error) {
-            console.log(error)
+    
+            const url = 'http://localhost:9999/api/user/register';
+    
+            try {
+    
+                const promise = await fetch(url , headerObj);
+                const response = await promise.json();
+                
+                if (!response) {
+                    throw new Error();
+                };
+    
+                const token = promise.headers.get('Authorization');
+     
+                document.cookie = `oreo=${token}`;
+    
+                context.login({
+                    username: response.username,
+                    userId: response._id
+                });
+    
+                history.push('/')
+    
+            } catch (error) {
+                console.log(error)
+            };
         };
 
     },
@@ -77,36 +90,41 @@ export default {
 
         event.preventDefault();
 
-        const data = {};
-        Object.assign(data , state);
-        
-        const headerObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+        const {usernameIsCorrect , passwordIsCorrect} = state;
 
-        const url = 'http://localhost:9999/api/user/verifyPassword'
-
-        const promise = await fetch(url , headerObj);
-
-        if(promise.status === 200) {
-
-            const response = await promise.json();
-
-            const token = promise.headers.get('Authorization');
- 
-            document.cookie = `oreo=${token}`;
-
-            context.login({
-                username: response.username,
-                userId: response._id
-            });
-
-            history.push('/')
-
+        if (usernameIsCorrect && passwordIsCorrect) {
+            
+            const data = {};
+            Object.assign(data , state);
+            
+            const headerObj = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+    
+            const url = 'http://localhost:9999/api/user/verifyPassword'
+    
+            const promise = await fetch(url , headerObj);
+    
+            if(promise.status === 200) {
+    
+                const response = await promise.json();
+    
+                const token = promise.headers.get('Authorization');
+     
+                document.cookie = `oreo=${token}`;
+    
+                context.login({
+                    username: response.username,
+                    userId: response._id
+                });
+    
+                history.push('/')
+    
+            };
         };
 
     },
@@ -118,18 +136,20 @@ export default {
         const url = `http://localhost:9999/api/user/validate/${username}`;
 
         if (username.length < 5) {
-            return handleError(target , 'Minimal length - 5 symbols');
-        }
+
+            return handleError(target , 'Minimal length - 5 symbols' , state , setState , 'username' , 'usernameIsCorrect');
+
+        };
         
         const promise = await fetch(url);
 
         if(promise.status === 200) {
 
-            return handleError(target , 'Username is already used');
+            return handleError(target , 'Username is already used' , state , setState , 'username' , 'usernameIsCorrect');
 
         };
 
-        return handleSuccess(target , state , setState , 'passwordIsDisabled');
+        return handleSuccess(target , state , setState , 'username' , username ,'usernameIsCorrect');
 
     },
 
@@ -140,15 +160,15 @@ export default {
         const url = `http://localhost:9999/api/user/validate/${username}`;
 
         const promise = await fetch(url);
-        
+
         if(promise.status !== 200) {
 
-            return handleError(target , 'Invalid Username')
+            return handleError(target , 'Invalid username' , state , setState , 'username' , 'usernameIsCorrect');
 
         };
 
-        return handleSuccess(target , state , setState , 'passwordIsDisabled');
-
+        return handleSuccess(target , state , setState , 'username' , username ,'usernameIsCorrect');
+        
     },
 
     handleLoginPasswordBlur : async (event , state , setState) => {
@@ -169,44 +189,45 @@ export default {
         const url = 'http://localhost:9999/api/user/verifyPassword';
 
         const promise = await fetch(url , headerObj);
-
+     
         if(promise.status !== 200) {
-
-            return handleError(target , 'Invalid Password')
+            
+            return handleError(target , 'Invalid password' , state , setState , 'password' , 'passwordIsCorrect');
 
         };
 
-        return handleSuccess(target , state , setState , 'buttonIsDisabled');
+        return handleSuccess(target , state , setState , 'password' , password , 'passwordIsCorrect');
 
     },
 
     handlePasswordBlur : (event , state , setState) => {
 
         const target = event.target;
-        const value = target.value;
+        const password = target.value;
+        
+        if(password.length < 7) {
 
-        if(value.length < 7) {
-
-            return handleError(target , 'Minimal Length - 7 symbols');
+            return handleError(target , 'Minimal Length - 7 symbols' , state , setState , 'password' , 'passwordIsCorrect');
 
         };
 
-        return handleSuccess(target , state , setState , 'rePasswordIsDisabled');
+        return handleSuccess(target , state , setState , 'password' , password , 'passwordIsCorrect');
 
     },
 
     handleRePasswordBlur : (event , state , setState) => {
 
         const target = event.target;
-        const value = target.value;
+        const rePassword = target.value;
         const {password} = state;
-        
-        if(value !== password) {
 
-            return handleError(target , "Passwords don't match");
+        if(rePassword !== password) {
+
+            return handleError(target , "Passwords don't match" , state , setState , 'rePassword' , 'rePasswordIsCorrect');
+
         };
 
-        return handleSuccess(target , state , setState , 'buttonIsDisabled');
+        return handleSuccess(target , state , setState , 'rePassword' , rePassword , 'rePasswordIsCorrect');
 
     },
 

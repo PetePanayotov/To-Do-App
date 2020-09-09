@@ -21,9 +21,9 @@ const {handleChange, login , handleLoginUsernameBlur , handleLoginPasswordBlur} 
 
 const initialState = {
     username: '',
+    usernameIsCorrect: null,
     password: '',
-    passwordIsDisabled: true,
-    buttonIsDisabled: true
+    passwordIsCorrect: null
 }
 
 const LoginPage = () => {
@@ -36,7 +36,7 @@ const LoginPage = () => {
     const history = useHistory();
     const [state , setState] = useState(initialState);
 
-    const {username , password , passwordIsDisabled , buttonIsDisabled} = state;
+    const {username , password} = state;
     
     return (
         
@@ -57,7 +57,6 @@ const LoginPage = () => {
                     <FormLabel>Password</FormLabel>
                     <FormInput 
                         type="password" value={password}
-                        disabled={passwordIsDisabled}
                         onChange={e => handleChange(e , state , setState , 'password')}
                         onBlur={e => handleLoginPasswordBlur(e , state , setState)}
                     />
@@ -65,7 +64,6 @@ const LoginPage = () => {
 
                 <SubmitButton type="submit" 
                     onClick={e => login(e , context , history , state)}
-                    disabled={buttonIsDisabled}
                 >
                     Login
                 </SubmitButton>

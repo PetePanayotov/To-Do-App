@@ -24,9 +24,9 @@ const initialState = {
     username: '',
     password: '',
     rePassword: '',
-    passwordIsDisabled: true,
-    rePasswordIsDisabled: true,
-    buttonIsDisabled: true
+    usernameIsCorrect: null,
+    passwordIsCorrect: null,
+    rePasswordIsCorrect: null
 };
 
 
@@ -42,7 +42,7 @@ const RegisterPage = () => {
     const history = useHistory();
     const [state , setState] = useState(initialState);
 
-    const {username , password , rePassword , passwordIsDisabled , rePasswordIsDisabled , buttonIsDisabled} = state;
+    const {username , password , rePassword} = state;
     
     return (
         
@@ -63,7 +63,6 @@ const RegisterPage = () => {
                     <FormInput 
                         type="password" 
                         value={password}
-                        disabled={passwordIsDisabled}
                         onChange={e => handleChange(e , state , setState , 'password')}
                         onBlur={e => handlePasswordBlur(e , state , setState)}
                     />
@@ -73,8 +72,7 @@ const RegisterPage = () => {
                     <FormLabel>Repeat Password</FormLabel>
                     <FormInput 
                         type="password" 
-                        value={rePassword}
-                        disabled={rePasswordIsDisabled} 
+                        value={rePassword} 
                         onChange={e => handleChange(e , state , setState , 'rePassword')} 
                         onBlur={e => handleRePasswordBlur(e , state , setState)}
                     />
@@ -82,7 +80,6 @@ const RegisterPage = () => {
 
                 <SubmitButton 
                     type="submit"
-                    disabled={buttonIsDisabled}
                     onClick={e => register(e , context , history ,state)}
                 >
                         Register
