@@ -115,6 +115,7 @@ const UpdateContainer = styled(Container) `
     padding: 10px 0;
     align-self: center;
     background-color: #EFEFEF;
+    margin: 20px 0;
 `;
 
 const UpdateWrapper = styled(Container) `
@@ -130,4 +131,17 @@ const UpdateWrapper = styled(Container) `
 
 `;
 
-export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer , InputContainer , UpdateContainer , UpdateWrapper};
+const DeleteBtnsWrapper = styled(Container) `
+
+    align-self: center;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 80%;
+    align-items: center;
+    display: none;
+    
+`;
+
+export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer , InputContainer , UpdateContainer , UpdateWrapper , DeleteBtnsWrapper};

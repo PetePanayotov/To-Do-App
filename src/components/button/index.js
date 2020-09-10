@@ -68,7 +68,7 @@ const FinishButton = styled(Button) `
     margin-left: 85%;
     font-size: 22px;
     font-weight: 500;
-    width: 10%;
+    width: 8vw;
     height: 25%;
     outline: none;
     color: #0F508E;
@@ -105,7 +105,7 @@ const PageButton = styled(Button) `
 
 const UpdateButton = styled(Button) `
 
-    width: 15%;
+    width: 10vw;
     height: 4vh;
     align-self: center;
     font-size: 18px;

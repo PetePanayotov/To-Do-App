@@ -4,20 +4,16 @@ import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import containersObj from '../../components/container';
 import inputsObj from '../../components/input';
-import linksObj from '../../components/link';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
-import paragraphsObj from '../../components/paragraph';
 import settingsPageHandlers from '../../utils/settings-page-handlers'
 
 
-const {UpdateContainer , UpdateWrapper} = containersObj;
+const {UpdateContainer , UpdateWrapper , DeleteBtnsWrapper} = containersObj;
 const {UpdateInput} = inputsObj;
-const {FormLink} = linksObj;
 const {Label} = labelsObj;
-const {SubmitButton , UpdateButton} = buttonsObj
-const {FormParagraph} = paragraphsObj;
-const {handleChange , handleInputBlur , updateUsername , handlePasswordBlur , handleRePasswordBlur , updatePassword} = settingsPageHandlers;
+const { UpdateButton} = buttonsObj
+const {handleChange , handleInputBlur , updateUsername , handlePasswordBlur , handleRePasswordBlur , updatePassword , handleDeleteBtnClick , handleCancelBtnClick , deleteAccount} = settingsPageHandlers;
 
 const initialState = {
     username: '',
@@ -39,7 +35,7 @@ const SettingsPage = () => {
     const history = useHistory();
     const [state , setState] = useState(initialState);
 
-    const {username , password , rePassword ,updateUnBtnDisabled} = state;
+    const {username , password , rePassword} = state;
     
     return (
         
@@ -60,7 +56,7 @@ const SettingsPage = () => {
                     type="submit"
                     onClick={e => updateUsername(e , history ,state ,userId)}
                 >
-                        Chanage
+                    <i className="far fa-edit"></i>&nbsp;&nbsp;&nbsp;Chanage
                 </UpdateButton>
 
             </UpdateContainer>
@@ -89,8 +85,40 @@ const SettingsPage = () => {
                     type="submit"
                     onClick={e => updatePassword(e , history ,state , userId)}
                 >
-                        Chanage
+                    <i className="far fa-edit"></i>&nbsp;&nbsp;&nbsp;Chanage
                 </UpdateButton>
+
+            </UpdateContainer>
+
+
+            <UpdateContainer>
+
+                <UpdateButton 
+                    type="submit"
+                    onClick={e => handleDeleteBtnClick(e)}
+                >
+                    <i className="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete
+                </UpdateButton>
+
+                <DeleteBtnsWrapper>
+                    
+                    <Label>Are you sure you want to delete your account?</Label>
+                    
+                    <UpdateButton 
+                    type="submit"
+                    onClick={e => handleCancelBtnClick(e)}
+                    >
+                        <i className="fas fa-ban"></i>&nbsp;&nbsp;&nbsp;Cancel
+                    </UpdateButton>
+
+                    <UpdateButton 
+                    type="submit"
+                    onClick={e => deleteAccount(e , context , history , userId)}
+                    >
+                        <i className="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete
+                    </UpdateButton>
+
+                </DeleteBtnsWrapper>
 
             </UpdateContainer>
 
@@ -99,6 +127,5 @@ const SettingsPage = () => {
     )
 
 };
-
 
 export default SettingsPage;

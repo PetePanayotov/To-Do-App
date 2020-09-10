@@ -4,7 +4,7 @@ import PageWrapper from '../../components/page-wrapper';
 import ActivityUnit from '../../components/activity-unit';
 import containersObj from '../../components/container';
 import buttonsObj from '../../components/button';
-import handlers from '../../utils/profile-page-handlers';
+import handlers from '../../utils/activities-page-handlers';
 
 const {PageBtnsContainer} = containersObj;
 const {PageButton} = buttonsObj;
