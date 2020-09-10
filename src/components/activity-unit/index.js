@@ -31,7 +31,7 @@ const ActivityUnit = ({handler , activity , location , date , time}) => {
             </ActivityParagraph>
 
             <FinishButton onClick={handler}>
-                Finish
+                <i className="fas fa-check-square"></i>&nbsp;&nbsp;&nbsp;Finish
             </FinishButton>
 
         </ActivityContainer>

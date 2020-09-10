@@ -161,6 +161,39 @@ export default {
     
         return;
     
+    },
+
+    handleDeleteBtnClick: (e) => {
+
+        const parent = e.currentTarget.parentNode;
+        
+        const [ , buttonsWrapper] = Array.from(parent.children);
+    
+        buttonsWrapper.style.display = 'flex';
+    
+    },
+    
+    handleCancelBtnClick: (e) => {
+    
+        const parent = e.currentTarget.parentNode;
+    
+        parent.style.display = 'none';
+    
+    },
+    
+    deleteAccount: async (e , context, history , userId) => {
+    
+        const url = `http://localhost:9999/api/user/delete/${userId}`;
+    
+        const promise = await fetch(url , {method: 'DELETE'});
+    
+        if (promise.status === 200) {
+            
+            context.logout();
+            history.push('/');
+    
+        };
+    
     }
 
 };

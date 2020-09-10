@@ -173,7 +173,7 @@ const deleteUser = async (req , res , next) => {
         res.send(removedUser);
 
     } catch (error) {
-        next();
+        res.status(401).send({});
     };
  
 };
