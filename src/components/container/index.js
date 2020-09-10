@@ -12,7 +12,10 @@ const Main = styled(Container) `
     display: flex;
     flex-direction: ${props => props.direction === 'column' ? 'column' : 'row'};
     justify-content: ${props => props.direction === 'column' ? 'space-evenly' : 'center'};
-   
+
+    @media only screen and (max-width: 768px) {
+        min-height: 84vh;
+    };
 
 `;
 
@@ -27,6 +30,10 @@ const DropDownContent = styled(Container) `
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 
+    @media only screen and (max-width: 768px) {
+        min-width: 100px;
+    };
+
 `;
 
 const AboutPageContainer = styled(Container) `
@@ -39,6 +46,10 @@ const AboutPageContainer = styled(Container) `
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (max-width: 768px) {
+        height: 55vh;
+    }
 
 `;
 
@@ -82,6 +93,13 @@ const ActivityContainer = styled(Container) `
     padding-bottom: 15px;
     margin: 0 auto;
 
+    @media only screen and (max-width: 768px) {
+        
+        width: 80%;
+        max-height: 17vh;
+
+    };
+
 `;
 
 const PageBtnsContainer = styled(Container) `
@@ -116,6 +134,13 @@ const UpdateContainer = styled(Container) `
     align-self: center;
     background-color: #EFEFEF;
     margin: 20px 0;
+
+    @media only screen and (max-width: 768px) {
+        
+        width: 80%;
+        height: 20vh;
+
+    };
 `;
 
 const UpdateWrapper = styled(Container) `
@@ -141,6 +166,12 @@ const DeleteBtnsWrapper = styled(Container) `
     height: 80%;
     align-items: center;
     display: none;
+
+    @media only screen and (max-width: 768px) {
+        
+        width: 70%;
+
+    };
     
 `;
 

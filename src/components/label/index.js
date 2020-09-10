@@ -4,12 +4,24 @@ const Label = styled.label `
 
     text-align: center;
     font-size: ${props => props.error ?'75px' : '25px'};
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: ${props => props.error ?'45px' : '14px'};
+
+    };
 `;
 
 const FormLabel = styled(Label) `
 
     font-size: 25px;
     font-weight: 400;
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 16px;
+
+    };
 
 `;
 

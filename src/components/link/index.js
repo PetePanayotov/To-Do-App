@@ -13,7 +13,12 @@ const HeaderLink = styled(Link) `
         padding-bottom: 5px;
         cursor: pointer;
         border-bottom: 2px solid #ffffff;
+    };
+
+    @media only screen and (max-width: 768px) {
+        font-size: 14px
     }
+
 `;
 
 const FormLink = styled(Link) `
@@ -26,7 +31,14 @@ const FormLink = styled(Link) `
     &:hover{
         cursor: pointer;
         border-bottom: 1px solid;
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 14px;
+
+    };
+
 `;
 
 const DropDownLink = styled(Link) `
@@ -42,7 +54,13 @@ const DropDownLink = styled(Link) `
     &:hover{
         color: #ffffff;
         background-color: #3A5A9C;
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 14px;
+
+    };
 
 `;
 

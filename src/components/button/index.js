@@ -20,7 +20,14 @@ const SubmitButton = styled(Button) `
         cursor: pointer;
         color: #ffffff;
         background-color: #3A5A9C;
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 16px;
+        width: 30%;
+        border: 1px solid #3A5A9C;
+    };
 
 `;
 
@@ -40,7 +47,12 @@ const LogoutButton = styled(Button) `
         cursor: pointer;
         color: #ffffff;
         background-color: #3A5A9C;
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 14px;
+    };
 
 `;
 
@@ -82,7 +94,15 @@ const FinishButton = styled(Button) `
         color: #ffffff;
         background-color: #0F508E;
         
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 12px;
+        width: 20vw;
+        height: 3vh;
+        margin-left: 70%;
+    };
 
 `;
 
@@ -99,7 +119,12 @@ const PageButton = styled(Button) `
         
         cursor: pointer;
         
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 14px;
+    };
 
 `;
 
@@ -121,7 +146,14 @@ const UpdateButton = styled(Button) `
         color: #ffffff;
         background-color: #0F508E;
         
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 12px;
+        width: 25vw;
+        height: 3vh;
+    };
 `;
 
 export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton};

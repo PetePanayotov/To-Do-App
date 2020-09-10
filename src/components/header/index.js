@@ -8,6 +8,10 @@ const Header = styled.header `
     background-color: #3A5A9C;
     display: flex;
     justify-content: flex-end;
+
+    @media only screen and (max-width: 768px) {
+        height: 8vh;
+    }
     
 `;
 
