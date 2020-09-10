@@ -10,6 +10,7 @@ import SeventyTwoHourForecast from './pages/48-hour-forecast';
 import AddPage from './pages/add-page';
 import ActivitiesPage from './pages/activities-page';
 import SettingsPage from './pages/settings-page';
+import ErrorPage from './pages/error-page';
 
 const Navigation = () => {
 
@@ -29,7 +30,7 @@ const Navigation = () => {
                 <Route path="/add" component={isLoggedIn ? AddPage : HomePage}/>
                 <Route path="/activities" component={isLoggedIn ? ActivitiesPage : HomePage}/>
                 <Route path="/settings" component={isLoggedIn ? SettingsPage : HomePage}/>
-                
+                <Route path="*" component={ErrorPage}/>
             </Switch>
         </BrowserRouter>
     );
