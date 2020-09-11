@@ -90,7 +90,7 @@ const PageWrapper = (props) => {
 
                             return (    
                                         <LinkWrapper key={i}>
-                                            <HeaderLink key={i} to={href}>{title}</HeaderLink>
+                                            <HeaderLink to={href}>{title}</HeaderLink>
                                         </LinkWrapper>
                                     )
                             
