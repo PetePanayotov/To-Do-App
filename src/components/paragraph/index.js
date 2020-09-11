@@ -74,6 +74,11 @@ const WeatherFrcUnitParagraph = styled(Paragraph) `
     color: ${props => props.date ? '#BCBCBA' : '#000000'};
     font-family: Arial, Helvetica, sans-serif;
 
+    @media only screen and (max-width: 768px) {
+        
+        font-size: ${props => props.title ? '12px' : '10px'};
+    }
+
 `;
 
 const ActivityTitleParagraph = styled(Paragraph) `

@@ -49,7 +49,7 @@ const AboutPageContainer = styled(Container) `
 
     @media only screen and (max-width: 768px) {
         height: 55vh;
-    }
+    };
 
 `;
 
@@ -61,6 +61,12 @@ const WeatherForecastConteiner = styled(Container) `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    @media only screen and (max-width: 768px) {
+        height: 50vh;
+        width: 80%;
+        flex-flow: row wrap;
+    }
 `;
 
 const ForeCastUnitWrapper = styled(Container) `
@@ -74,6 +80,13 @@ const ForeCastUnitWrapper = styled(Container) `
     flex-direction: column;
     justify-content: space-evenly;
 
+    @media only screen and (max-width: 768px) {
+
+        height: 60%;
+        width: 20%;
+        margin-top: 10px;
+    }
+
 `;
 
 const ForeCstImageWrapper = styled(Container) `
@@ -81,6 +94,10 @@ const ForeCstImageWrapper = styled(Container) `
     width: 90%;
     height: 28%;
     align-self: center;
+
+    @media only screen and (max-width: 768px) {
+        height: 25%;
+    }
    
 `;
 

@@ -41,13 +41,14 @@ const ForecastPage = () => {
     
     return(
         <PageWrapper withVideo={false}>
+
+            <ArrowButton position="left" disabled={index === 0} onClick={() => setIndex(index - 1)}>
+                <i className="fas fa-chevron-left"></i>
+            </ArrowButton>
+
             <WeatherForecastConteiner>
 
 
-
-                <ArrowButton disabled={index === 0} onClick={() => setIndex(index - 1)}>
-                    <i className="fas fa-chevron-left"></i>
-                </ArrowButton>
 
                 
 
@@ -80,11 +81,13 @@ const ForecastPage = () => {
                     })
                 }
 
-                <ArrowButton disabled={index === 16} onClick={() => setIndex(index + 1)}>
-                    <i className="fas fa-chevron-right"></i>
-                </ArrowButton>
 
             </WeatherForecastConteiner>
+
+            <ArrowButton disabled={index === 16} onClick={() => setIndex(index + 1)}>
+                <i className="fas fa-chevron-right"></i>
+            </ArrowButton>
+            
         </PageWrapper>
     );
 

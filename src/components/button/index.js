@@ -58,21 +58,31 @@ const LogoutButton = styled(Button) `
 
 const ArrowButton = styled(Button) `
 
-    height: 40%;
+    height: 30vh;
     opacity: 0.5;
     font-size: 40px;
     outline: none;
-    background-color:#D9D6D5;
+    background-color: #D9D6D5;
     border: 1px solid #D9D6D5;
     border-radius: 20px;
     color: #ACACA8;
+    align-self: center;
+
     
     &:hover {
         
         cursor: pointer;
         opacity: 1;
         
-    }
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        height: 20vh;
+        opacity: 0.5;
+        font-size: 25px;
+    };
+
 `;
 
 const FinishButton = styled(Button) `
