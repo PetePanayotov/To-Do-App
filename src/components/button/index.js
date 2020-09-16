@@ -166,4 +166,15 @@ const UpdateButton = styled(Button) `
     };
 `;
 
-export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton};
+const HamburgerButton = styled(Button) `
+
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3A5A9C;
+    font-size: 24px;
+    outline: none;
+    border: none;
+    
+`;
+
+export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton , HamburgerButton};
