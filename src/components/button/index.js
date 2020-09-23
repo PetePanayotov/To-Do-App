@@ -6,7 +6,7 @@ const Button = styled.button `
 
 const SubmitButton = styled(Button) `
 
-    width: 25%;
+    min-width: 25%;
     height: 7%;
     align-self: center;
     font-size: 20px;
@@ -177,4 +177,26 @@ const HamburgerButton = styled(Button) `
     
 `;
 
-export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton , HamburgerButton};
+const LanguageButton = styled(Button) `
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    background-color: #3A5A9C;
+    color: #ffffff;
+    outline: none;
+    height: 20px;
+    font-size: 15px;
+
+    &:hover {
+        
+        cursor: pointer;
+        
+    };
+
+    @media only screen and (max-width: 768px) {
+        
+        font-size: 12px;
+        height: 15px;
+    };
+`;
+
+export default {SubmitButton , LogoutButton , ArrowButton , FinishButton , PageButton , UpdateButton , LanguageButton};

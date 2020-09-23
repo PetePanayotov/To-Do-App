@@ -8,6 +8,7 @@ import inputsObj from '../../components/input';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
 import handlers from '../../utils/form-handlers';
+import dictionary from '../../dictionary';
 
 
 const {InputContainer} = containersObj;
@@ -34,15 +35,15 @@ const AddPage = () => {
     } , []);
 
     const {activity , location , date , time} = state;
-    const {user: {userId}} = context;
-
+    const {user: {userId} , language} = context;
+    const stringsObj = dictionary[language];
 
     return (
         <PageWrapper withVideo={false}>
             <Form>
 
                 <InputContainer>
-                    <FormLabel>Activity</FormLabel>
+                    <FormLabel>{stringsObj.activity}</FormLabel>
                     <FormInput
                         value={activity} 
                         placeholder='What do you feel like doing?' 
@@ -52,7 +53,7 @@ const AddPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>{stringsObj.location}</FormLabel>
                     <FormInput 
                         value={location} 
                         placeholder='When are you going to do it?'
@@ -61,7 +62,7 @@ const AddPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Date</FormLabel>
+                    <FormLabel>{stringsObj.date}</FormLabel>
                     <FormInput
                         value={date} 
                         placeholder='17/07/2020'
@@ -70,7 +71,7 @@ const AddPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Time</FormLabel>
+                    <FormLabel>{stringsObj.time}</FormLabel>
                     <FormInput 
                         value={time} 
                         placeholder='17:17'

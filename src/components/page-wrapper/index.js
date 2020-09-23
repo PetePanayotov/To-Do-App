@@ -12,10 +12,11 @@ import buttonsObj from '../button';
 import paragraphsObj from '../paragraph';
 import getNavigation from '../../utils/getNavigation';
 import handlers from '../../utils/page-wrapper-handler';
+import dictionary from '../../dictionary';
 
 const {HeaderLink , DropDownLink} = linksObj;
-const {Main , DropDownContent} = containerObj;
-const {LogoutButton} = buttonsObj;
+const {Main , DropDownContent , LangBtnsContainer} = containerObj;
+const {LogoutButton , LanguageButton} = buttonsObj;
 const {FooterParagraph} = paragraphsObj;
 const {handleMouseOver , handleMouseOut , logout} = handlers;
 
@@ -23,14 +24,24 @@ const {handleMouseOver , handleMouseOut , logout} = handlers;
 const PageWrapper = (props) => {
 
     const context = useContext(UserContext);
-    const {isLoggedIn , user:{username , userId}} = context;
+    const {isLoggedIn , user:{username , userId} , language , changeLang} = context;
     const history = useHistory()
     const linksArray = getNavigation(isLoggedIn);
-    
+    const stringsObj = dictionary[language];
 
     return (
         <div>
             <Header>
+
+                <LangBtnsContainer>
+                    <LanguageButton onClick={() => changeLang('EN')}>
+                        EN
+                    </LanguageButton>
+                    <LanguageButton onClick={() => changeLang('BG')}>
+                        BG
+                    </LanguageButton>
+                </LangBtnsContainer>
+
                 <Navigation>
 
                     {
@@ -43,15 +54,15 @@ const PageWrapper = (props) => {
                             <DropDownContent>
                                 
                                 <DropDownLink to={`/activities?id=${userId}`}>
-                                    <i className="fas fa-snowboarding"></i>&nbsp;&nbsp;&nbsp;My Activities
+                                    <i className="fas fa-snowboarding"></i>&nbsp;&nbsp;&nbsp;{stringsObj.myActivities}
                                 </DropDownLink>
 
                                 <DropDownLink to={`/settings?id=${userId}`}>
-                                    <i className="fas fa-user-cog"></i>&nbsp;&nbsp;&nbsp;Settings
+                                    <i className="fas fa-user-cog"></i>&nbsp;&nbsp;&nbsp;{stringsObj.settings}
                                 </DropDownLink>
 
                                 <LogoutButton onClick={() => logout(context , history)}>
-                                    <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;Logout
+                                    <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;{stringsObj.logout}
                                 </LogoutButton>
 
                             </DropDownContent>
@@ -64,20 +75,20 @@ const PageWrapper = (props) => {
 
                         <LinkWrapper onMouseOver={e => handleMouseOver(e)} onMouseOut={e => handleMouseOut(e)}>
 
-                            Weather <i className="fas fa-chevron-down"></i>
+                            {stringsObj.weather} <i className="fas fa-chevron-down"></i>
 
                             <DropDownContent>
 
                                 <DropDownLink to="/current-forecast">
-                                    Today
+                                    {stringsObj.today}
                                 </DropDownLink>
 
                                 <DropDownLink to="/72-hour-forecast">
-                                    <i className="fas fa-clock"></i>&nbsp;&nbsp;&nbsp;72-Hour
+                                    <i className="fas fa-clock"></i>&nbsp;&nbsp;&nbsp;{stringsObj['72-hour']}
                                 </DropDownLink>
 
                                 <DropDownLink to="/seven-day-forecast">
-                                    <i className="fas fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;7-Day
+                                    <i className="fas fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;{stringsObj['7-day']}
                                 </DropDownLink>
 
                             </DropDownContent>
@@ -90,7 +101,7 @@ const PageWrapper = (props) => {
 
                             return (    
                                         <LinkWrapper key={i}>
-                                            <HeaderLink to={href}>{title}</HeaderLink>
+                                            <HeaderLink to={href}>{stringsObj[title]}</HeaderLink>
                                         </LinkWrapper>
                                     )
                             

@@ -10,6 +10,7 @@ import linksObj from '../../components/link';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import loginPageHandlers from '../../utils/form-handlers';
+import dictionary from '../../dictionary';
 
 const {InputContainer} = containersObj;
 const {FormInput} = inputsObj;
@@ -35,8 +36,9 @@ const LoginPage = () => {
     const context = useContext(UserContext);
     const history = useHistory();
     const [state , setState] = useState(initialState);
-
     const {username , password} = state;
+    const {language} = context;
+    const stringsObj = dictionary[language];
     
     return (
         
@@ -45,7 +47,7 @@ const LoginPage = () => {
             <Form>
 
                 <InputContainer>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>{stringsObj.username}</FormLabel>
                     <FormInput 
                         value={username} 
                         onChange={e => handleChange(e , state , setState , 'username')}
@@ -54,7 +56,7 @@ const LoginPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{stringsObj.password}</FormLabel>
                     <FormInput 
                         type="password" value={password}
                         onChange={e => handleChange(e , state , setState , 'password')}
@@ -65,7 +67,7 @@ const LoginPage = () => {
                 <SubmitButton type="submit" 
                     onClick={e => login(e , context , history , state)}
                 >
-                    Login
+                    {stringsObj.login}
                 </SubmitButton>
 
                 <FormParagraph>

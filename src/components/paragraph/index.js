@@ -23,9 +23,11 @@ const FooterParagraph = styled(Paragraph) `
     color: #ffffff;
     font-size: 26px;
     font-family: Arial, Helvetica, sans-serif; 
+    align-self: center;
+    margin: 0 auto;
 
     @media only screen and (max-width: 768px) {
-        font-size: 14px
+        font-size: 18px
     }
 
 `;

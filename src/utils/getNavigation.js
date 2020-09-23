@@ -3,18 +3,18 @@ const getNavigation = (isLoggedIn) => {
     const loggedIn = [
 
         {
-            title: 'Home',
+            title: 'home',
             href: '/'
 
         },
 
         {
-            title: 'Add',
+            title: 'add',
             href: '/add'
         },
         
         {
-            title: 'About',
+            title: 'about',
             href: '/about'
         },
 
@@ -24,23 +24,23 @@ const getNavigation = (isLoggedIn) => {
     const notLoggedIn = [
 
         {
-            title: 'Home',
+            title: 'home',
             href: '/'
 
         },
 
         {
-            title: 'About',
+            title: 'about',
             href: '/about'
         },
 
         {
-            title: 'Login',
+            title: 'login',
             href: '/login'
         },
 
         {
-            title: 'Register',
+            title: 'register',
             href: '/register'
         }
     ];

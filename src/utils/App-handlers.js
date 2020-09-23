@@ -5,36 +5,49 @@ const getCookie = (name) => {
 
 };
 
-export default async (login , logout) => {
+export default {
 
-    const cookieValue = getCookie('oreo');
+    verifyUser: async (login , logout) => {
 
-    if (!cookieValue) {
-        return logout()
-        
-    };
+        const cookieValue = getCookie('oreo');
+
     
-    const url = 'http://localhost:9999/api/user/verify';
+        if (!cookieValue) {
+
+            return logout()
+            
+        };
+        
+        const url = 'http://localhost:9999/api/user/verify';
+        
+        const data = {token: cookieValue};
     
-    const data = {token: cookieValue};
+        const headersObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+    
+        const promise = await fetch(url , headersObj);
+    
+        if (promise.status === 200) {
+            
+            const user = await promise.json();
 
-    const headersObj = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
+            return login(user);
+        };
+    
+        return logout();
+    
+    },
 
-    const promise = await fetch(url , headersObj);
+    setLanguage: (changeLang) => {
 
-    if (promise.status === 200) {
-        
-        const user = await promise.json();
-        
-        return login(user);
-    };
+        const language = sessionStorage.getItem('language') || 'EN';
+    
+        return changeLang(language);
 
-    return logout();
-
+    }
 };

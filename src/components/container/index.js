@@ -192,4 +192,14 @@ const DeleteBtnsWrapper = styled(Container) `
     
 `;
 
-export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer , InputContainer , UpdateContainer , UpdateWrapper , DeleteBtnsWrapper};
+const LangBtnsContainer = styled(Container) `
+
+    display: flex;
+    width: 35px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 5px;
+`;
+
+
+export default {Main , DropDownContent , AboutPageContainer , WeatherForecastConteiner , ForeCastUnitWrapper , ForeCstImageWrapper , ActivityContainer , PageBtnsContainer , InputContainer , UpdateContainer , UpdateWrapper , DeleteBtnsWrapper , LangBtnsContainer};

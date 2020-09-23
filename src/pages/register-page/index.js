@@ -10,6 +10,7 @@ import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
 import paragraphsObj from '../../components/paragraph';
 import registerPageHandlers from '../../utils/form-handlers'
+import dictionary from '../../dictionary';
 
 
 const {InputContainer} = containersObj;
@@ -43,6 +44,8 @@ const RegisterPage = () => {
     const [state , setState] = useState(initialState);
 
     const {username , password , rePassword} = state;
+    const {language} = context;
+    const stringsObj = dictionary[language];
     
     return (
         
@@ -51,7 +54,7 @@ const RegisterPage = () => {
             <Form>
 
                 <InputContainer>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>{stringsObj.username}</FormLabel>
                     <FormInput value={username} 
                         onChange={e => handleChange(e , state , setState , 'username')}
                         onBlur={e => handleUserNameBlur(e , state , setState)}
@@ -59,7 +62,7 @@ const RegisterPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{stringsObj.password}</FormLabel>
                     <FormInput 
                         type="password" 
                         value={password}
@@ -69,7 +72,7 @@ const RegisterPage = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <FormLabel>Repeat Password</FormLabel>
+                    <FormLabel>{stringsObj.rePassword}</FormLabel>
                     <FormInput 
                         type="password" 
                         value={rePassword} 
@@ -82,7 +85,7 @@ const RegisterPage = () => {
                     type="submit"
                     onClick={e => register(e , context , history ,state)}
                 >
-                        Register
+                        {stringsObj.register}
                 </SubmitButton>
 
                 <FormParagraph>
