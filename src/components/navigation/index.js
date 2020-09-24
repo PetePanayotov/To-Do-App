@@ -8,7 +8,8 @@ const Navigation = styled.ul `
     align-items: center;
 
     @media only screen and (max-width: 768px) {
-        width: 85%;
+        width: 100%;
+        padding-left: 0;
     }
 
 `;

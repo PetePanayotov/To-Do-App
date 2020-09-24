@@ -1,8 +1,6 @@
 import React , {useState, useEffect , useCallback} from 'react';
 import UserContext from './Context';
-import handlers from './utils/App-handlers';
-
-const {verifyUser , setLanguage} = handlers;
+import verifyUser from './utils/App-handlers';
 
 
 const App = (props) => {
@@ -11,7 +9,7 @@ const App = (props) => {
         
         isLoggedIn: null, 
         user: {},
-        language: 'EN'
+        language: sessionStorage.getItem('language') || 'EN'
         
     };
 
@@ -38,8 +36,7 @@ const App = (props) => {
 
         setState({
             ...state,
-            isLoggedIn: false,
-            user: {}
+            ...newState
         });
 
     };
@@ -58,6 +55,7 @@ const App = (props) => {
     }
 
     useEffect(() => {
+
         verifyUser(login , logout);
     } , [])
 

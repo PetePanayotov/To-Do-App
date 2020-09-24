@@ -71,9 +71,9 @@ const LoginPage = () => {
                 </SubmitButton>
 
                 <FormParagraph>
-                    Not registered yet? 
+                    {stringsObj.regQ}
 
-                    <FormLink to="/register"> Register</FormLink>
+                    <FormLink to="/register"> {stringsObj.register}</FormLink>
                 </FormParagraph>
 
             </Form>

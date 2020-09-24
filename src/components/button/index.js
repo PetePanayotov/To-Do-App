@@ -25,7 +25,7 @@ const SubmitButton = styled(Button) `
     @media only screen and (max-width: 768px) {
         
         font-size: 16px;
-        width: 30%;
+        min-width: 30%;
         border: 1px solid #3A5A9C;
     };
 
@@ -90,7 +90,7 @@ const FinishButton = styled(Button) `
     margin-left: 85%;
     font-size: 22px;
     font-weight: 500;
-    width: 8vw;
+    min-width: 8vw;
     height: 25%;
     outline: none;
     color: #0F508E;
@@ -109,7 +109,7 @@ const FinishButton = styled(Button) `
     @media only screen and (max-width: 768px) {
         
         font-size: 12px;
-        width: 20vw;
+        min-width: 20vw;
         height: 3vh;
         margin-left: 70%;
     };
@@ -149,6 +149,7 @@ const UpdateButton = styled(Button) `
     border: 2px solid #0F508E;
     border-radius: 10px;
     outline: none;
+    font-weight: 700;
 
     &:hover {
         
@@ -166,36 +167,31 @@ const UpdateButton = styled(Button) `
     };
 `;
 
-const HamburgerButton = styled(Button) `
-
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #3A5A9C;
-    font-size: 24px;
-    outline: none;
-    border: none;
-    
-`;
-
 const LanguageButton = styled(Button) `
-    font-family: Arial, Helvetica, sans-serif;
-    border: none;
-    background-color: #3A5A9C;
-    color: #ffffff;
+    
+    font-family: Arial,Helvetica,sans-serif;
+    border: 2px solid #3A5A9C;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #3A5A9C;
     outline: none;
-    height: 20px;
-    font-size: 15px;
+    height: 30px;
+    width: 60px;
+    font-size: 20px;
+    font-weight: 700;
 
     &:hover {
         
         cursor: pointer;
+        color: #ffffff;
+        background-color: #0F508E;
         
     };
 
     @media only screen and (max-width: 768px) {
-        
-        font-size: 12px;
-        height: 15px;
+        width: 40px;
+        height: 25px;
+        font-size: 15px;
     };
 `;
 

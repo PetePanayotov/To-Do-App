@@ -8,10 +8,10 @@ const FormInput = styled(Input) `
 
     height: 40%;
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
 
     ::placeholder {
-        font-size: 14px;
+        font-size: 15px;
         color: #000000;
     };
 

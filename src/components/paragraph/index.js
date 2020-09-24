@@ -110,7 +110,7 @@ const ActivityParagraph = styled(Paragraph) `
     margin-left: 75px;  
 
     @media only screen and (max-width: 768px) {
-        font-size: 18px;
+        font-size: 16px;
     };    
 
 `;

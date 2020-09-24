@@ -8,7 +8,7 @@ const {ActivityTitleParagraph , ActivityParagraph} = paragraphsObj;
 const {FinishButton} = buttonsObj;
 
 
-const ActivityUnit = ({handler , activity , location , date , time}) => {
+const ActivityUnit = ({handler , stringsObj ,activity , location , date , time}) => {
 
     return (
 
@@ -19,19 +19,19 @@ const ActivityUnit = ({handler , activity , location , date , time}) => {
             </ActivityTitleParagraph>
 
             <ActivityParagraph>
-                Location: {location}
+                {stringsObj.location}: {location}
             </ActivityParagraph>
 
             <ActivityParagraph>
-                Date: {date}
+                {stringsObj.date}: {date}
             </ActivityParagraph>
 
             <ActivityParagraph>
-                Time: {time}
+                {stringsObj.time}: {time}
             </ActivityParagraph>
 
             <FinishButton onClick={handler}>
-                <i className="fas fa-check-square"></i>&nbsp;&nbsp;&nbsp;Finish
+                <i className="fas fa-check-square"></i>&nbsp;&nbsp;&nbsp;{stringsObj.finish}
             </FinishButton>
 
         </ActivityContainer>

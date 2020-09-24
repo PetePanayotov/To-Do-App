@@ -46,7 +46,7 @@ const AddPage = () => {
                     <FormLabel>{stringsObj.activity}</FormLabel>
                     <FormInput
                         value={activity} 
-                        placeholder='What do you feel like doing?' 
+                        placeholder={stringsObj.activityQ} 
                         onChange={e => handleChange(e , state , setState , 'activity')}
                         
                     />
@@ -56,7 +56,7 @@ const AddPage = () => {
                     <FormLabel>{stringsObj.location}</FormLabel>
                     <FormInput 
                         value={location} 
-                        placeholder='When are you going to do it?'
+                        placeholder={stringsObj.locationQ}
                         onChange={e => handleChange(e , state , setState , 'location')}
                     />
                 </InputContainer>
@@ -80,7 +80,7 @@ const AddPage = () => {
                 </InputContainer>
 
                 <SubmitButton onClick={e => addActivity(e, history , state , userId)}>
-                    Add
+                    {stringsObj.add}
                 </SubmitButton>
 
             </Form>

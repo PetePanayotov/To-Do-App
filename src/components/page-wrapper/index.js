@@ -33,15 +33,6 @@ const PageWrapper = (props) => {
         <div>
             <Header>
 
-                <LangBtnsContainer>
-                    <LanguageButton onClick={() => changeLang('EN')}>
-                        EN
-                    </LanguageButton>
-                    <LanguageButton onClick={() => changeLang('BG')}>
-                        BG
-                    </LanguageButton>
-                </LangBtnsContainer>
-
                 <Navigation>
 
                     {

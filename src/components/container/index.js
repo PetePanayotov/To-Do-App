@@ -129,7 +129,7 @@ const PageBtnsContainer = styled(Container) `
 
 const InputContainer = styled.div `
 
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     height: 15%;
     display: flex;
@@ -194,11 +194,16 @@ const DeleteBtnsWrapper = styled(Container) `
 
 const LangBtnsContainer = styled(Container) `
 
+    width: 50%;
+    height: 25%;
     display: flex;
-    width: 35px;
-    flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-left: 5px;
+
+    @media only screen and (max-width: 768px) {
+        
+        width: 100%;
+
+    };
 `;
 
 

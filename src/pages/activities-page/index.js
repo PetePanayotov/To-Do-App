@@ -5,6 +5,7 @@ import ActivityUnit from '../../components/activity-unit';
 import containersObj from '../../components/container';
 import buttonsObj from '../../components/button';
 import handlers from '../../utils/activities-page-handlers';
+import dictionary from '../../dictionary';
 
 const {PageBtnsContainer} = containersObj;
 const {PageButton} = buttonsObj;
@@ -14,7 +15,9 @@ const {getActivities , changePage , finishActivity} = handlers;
 const ActivitiesPage = () => {
 
     const context = useContext(UserContext);
-    const {user:{username , userId}} = context;
+    const {user:{username , userId} , language} = context;
+    const stringsObj = dictionary[language];
+    
     const [state , setState] = useState([]);
     const [pages , setPages] = useState([]);
     const [startInd , setStartInd] = useState(0);
@@ -46,6 +49,7 @@ const ActivitiesPage = () => {
                         <ActivityUnit
                             handler={(e) => finishActivity(e , state , setState , _id)}
                             key={i}
+                            stringsObj={stringsObj}
                             id={_id}
                             activity={activity}
                             location={location}

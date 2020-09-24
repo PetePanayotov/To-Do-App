@@ -6,13 +6,14 @@ import containersObj from '../../components/container';
 import inputsObj from '../../components/input';
 import labelsObj from '../../components/label';
 import buttonsObj from '../../components/button';
-import settingsPageHandlers from '../../utils/settings-page-handlers'
+import settingsPageHandlers from '../../utils/settings-page-handlers';
+import dictionary from '../../dictionary';
 
 
-const {UpdateContainer , UpdateWrapper , DeleteBtnsWrapper} = containersObj;
+const {UpdateContainer , UpdateWrapper , DeleteBtnsWrapper , LangBtnsContainer} = containersObj;
 const {UpdateInput} = inputsObj;
 const {Label} = labelsObj;
-const { UpdateButton} = buttonsObj
+const { UpdateButton , LanguageButton} = buttonsObj
 const {handleChange , handleInputBlur , updateUsername , handlePasswordBlur , handleRePasswordBlur , updatePassword , handleDeleteBtnClick , handleCancelBtnClick , deleteAccount} = settingsPageHandlers;
 
 const initialState = {
@@ -31,7 +32,8 @@ const SettingsPage = () => {
     } , []);
 
     const context = useContext(UserContext);
-    const {user: {userId}} = context;
+    const {user: {userId} , language ,changeLang} = context;
+    const stringsObj = dictionary[language];
     const history = useHistory();
     const [state , setState] = useState(initialState);
 
@@ -44,7 +46,7 @@ const SettingsPage = () => {
             <UpdateContainer>
 
                 <UpdateWrapper>
-                    <Label>New Username</Label>
+                    <Label>{stringsObj.newName}</Label>
                     <UpdateInput 
                         value={username}
                         onChange={e => handleChange (e , state , setState , 'username')}
@@ -56,7 +58,7 @@ const SettingsPage = () => {
                     type="submit"
                     onClick={e => updateUsername(e , history ,state ,userId)}
                 >
-                    <i className="far fa-edit"></i>&nbsp;&nbsp;&nbsp;Chanage
+                    <i className="far fa-edit"></i>&nbsp;{stringsObj.change}
                 </UpdateButton>
 
             </UpdateContainer>
@@ -64,7 +66,7 @@ const SettingsPage = () => {
             <UpdateContainer>
 
                 <UpdateWrapper>
-                    <Label>New Password</Label>
+                    <Label>{stringsObj.newPassword}</Label>
                     <UpdateInput
                         type="password"
                         value={password} 
@@ -72,7 +74,7 @@ const SettingsPage = () => {
                         onBlur = {e => handlePasswordBlur(e , state , setState)}
                     />
 
-                    <Label>Confirm New Password</Label>
+                    <Label>{stringsObj.confirm}</Label>
                     <UpdateInput
                         type="password" 
                         value={rePassword} 
@@ -85,8 +87,31 @@ const SettingsPage = () => {
                     type="submit"
                     onClick={e => updatePassword(e , history ,state , userId)}
                 >
-                    <i className="far fa-edit"></i>&nbsp;&nbsp;&nbsp;Chanage
+                    <i className="far fa-edit"></i>&nbsp;{stringsObj.change}
                 </UpdateButton>
+
+            </UpdateContainer>
+
+            <UpdateContainer>
+
+                <UpdateWrapper>
+                    <Label>{stringsObj.lang}</Label>
+
+                    <LangBtnsContainer>
+                        <LanguageButton onClick={() => changeLang('EN')}>
+                                EN
+                        </LanguageButton>
+                                
+                        <LanguageButton onClick={() => changeLang('BG')}>
+                                BG
+                        </LanguageButton>
+                                
+                        <LanguageButton onClick={() => changeLang('IT')}>
+                                IT
+                        </LanguageButton>
+                    </LangBtnsContainer>
+                </UpdateWrapper>
+
 
             </UpdateContainer>
 
@@ -97,25 +122,25 @@ const SettingsPage = () => {
                     type="submit"
                     onClick={e => handleDeleteBtnClick(e)}
                 >
-                    <i className="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete
+                    <i className="fas fa-trash-alt"></i>&nbsp;{stringsObj.delete}
                 </UpdateButton>
 
                 <DeleteBtnsWrapper>
                     
-                    <Label>Are you sure you want to delete your account?</Label>
+                    <Label>{stringsObj.delQ}</Label>
                     
                     <UpdateButton 
                     type="submit"
                     onClick={e => handleCancelBtnClick(e)}
                     >
-                        <i className="fas fa-ban"></i>&nbsp;&nbsp;&nbsp;Cancel
+                        <i className="fas fa-ban"></i>&nbsp;{stringsObj.cancel}
                     </UpdateButton>
 
                     <UpdateButton 
                     type="submit"
                     onClick={e => deleteAccount(e , context , history , userId)}
                     >
-                        <i className="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete
+                        <i className="fas fa-trash-alt"></i>&nbsp;{stringsObj.delete}
                     </UpdateButton>
 
                 </DeleteBtnsWrapper>
