@@ -109,9 +109,9 @@ const FinishButton = styled(Button) `
     @media only screen and (max-width: 768px) {
         
         font-size: 12px;
-        min-width: 20vw;
+        min-width: 25vw;
         height: 3vh;
-        margin-left: 70%;
+        margin-left: 65%;
     };
 
 `;

@@ -95,8 +95,8 @@ const ActivityTitleParagraph = styled(Paragraph) `
     margin-bottom: 0;
 
     @media only screen and (max-width: 768px) {
-        font-size: 25px;
-        width: 40%;
+        font-size: 22px;
+        width: 55%;
         margin-top: -20px;
     };
 
